@@ -4,117 +4,54 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sona City Regelwerk</title>
-
-  <!-- Favicon (kleines Tab-Icon) -->
   <link rel="icon" type="image/png" href="logo.png" />
-
   <style>
     :root{
-      --bg:#0f0f0f;
-      --panel:#1a1a1a;
-      --text:#eaeaea;
-      --muted:#bdbdbd;
-      --accent:#ff8800;
-      --radius:12px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --bg:#0f0f0f; --panel:#1a1a1a; --text:#eaeaea; --muted:#bdbdbd;
+      --accent:#ff8800; --radius:12px; --shadow:0 10px 30px rgba(0,0,0,.35);
       --maxw:980px;
     }
-
-    /* Base */
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;scroll-behavior:smooth}
     body{display:flex;flex-direction:column;align-items:center;opacity:0;animation:fadeIn .6s ease forwards}
     @keyframes fadeIn{to{opacity:1}}
 
-    /* Header mit Logo */
-    .header{
-      width:100%;
-      max-width:var(--maxw);
-      display:flex;
-      align-items:center;
-      gap:14px;
-      padding:28px 18px 0;
-    }
-    .logo{
-      height:64px;width:auto;display:block;image-rendering:auto;
-    }
+    .header{width:100%;max-width:var(--maxw);display:flex;align-items:center;gap:16px;padding:32px 18px 0;justify-content:center}
+    .logo{height:64px;width:auto;display:block}
     .title-wrap{display:flex;flex-direction:column;gap:4px}
     .title{
-      margin:0;line-height:1;
-      font-size: clamp(28px, 4.2vw, 44px);
-      font-weight:800;letter-spacing:.2px;
-      /* animierter Verlauf im Text */
-      background:linear-gradient(90deg,#ff8800,#ff2e7a,#8a2eff,#ff8800);
-      background-size:300% 100%;
-      -webkit-background-clip:text;background-clip:text;
-      -webkit-text-fill-color:transparent;
-      animation:shift 8s linear infinite;
+      margin:0;line-height:1;font-size:clamp(32px,4.6vw,52px);font-weight:800;letter-spacing:.2px;
+      background:linear-gradient(90deg,#ff8800,#ff007f,#a045ff,#ff8800);
+      background-size:400% 100%;
+      -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      animation:shift 6s ease infinite; text-shadow:0 0 12px rgba(255,136,0,.35);
     }
     @keyframes shift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+    .version{margin:0;color:var(--muted);font-size:13px;text-align:left}
 
-    .version{margin:0;color:var(--muted);font-size:13px}
-
-    /* Content */
-    .wrap{
-      width:100%;max-width:var(--maxw);padding:20px 18px 80px;display:flex;flex-direction:column;gap:14px
-    }
-
-    /* §-Karten (details/summary) */
-    details{
-      background:var(--panel);
-      border:1px solid #232323;border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-      overflow:hidden;
-    }
-    details:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 34px rgba(0,0,0,.45), 0 0 12px rgba(255,136,0,.18);
-      border-color:#2b2b2b;
-    }
-    summary{
-      list-style:none;cursor:pointer;user-select:none;outline:none;
-      font-weight:700;font-size:16px;color:var(--accent);
-      display:flex;align-items:center;justify-content:space-between;
-      padding:14px 18px;
-    }
-    /* Plus/Minus Symbol */
-    summary::after{
-      content:"+";font-weight:900;color:var(--accent);
-      transition:transform .2s ease, opacity .2s ease;
-    }
-    details[open] summary::after{transform:rotate(45deg);}
-
-    .panel{
-      padding:0 18px 14px 18px;color:var(--muted);font-size:15px;line-height:1.6;
-      animation:reveal .25s ease;
-    }
+    .wrap{width:100%;max-width:var(--maxw);padding:20px 18px 80px;display:flex;flex-direction:column;gap:14px}
+    details{background:var(--panel);border:1px solid #232323;border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .15s ease,box-shadow .2s ease,border-color .2s ease;overflow:hidden}
+    details:hover{transform:translateY(-1px);box-shadow:0 14px 34px rgba(0,0,0,.45),0 0 12px rgba(255,136,0,.18);border-color:#2b2b2b}
+    summary{list-style:none;cursor:pointer;user-select:none;outline:none;font-weight:700;font-size:16px;color:var(--accent);display:flex;align-items:center;justify-content:space-between;padding:14px 18px}
+    summary::after{content:"+";font-weight:900;color:var(--accent);transition:transform .2s ease,opacity .2s ease}
+    details[open] summary::after{transform:rotate(45deg)}
+    .panel{padding:0 18px 14px;color:var(--muted);font-size:15px;line-height:1.6;animation:reveal .25s ease}
     @keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
 
-    /* Footer */
+    .subhead{color:#ffb35a;font-weight:800;margin:14px 0 6px;font-size:15px;letter-spacing:.2px}
+    ul{margin:8px 0 14px 18px}
+    li{margin:4px 0}
+
     footer{margin-top:24px;text-align:center;color:#8a8a8a;font-size:12px}
-
-    /* „Nach oben“-Button */
-    #topBtn{
-      position:fixed;right:18px;bottom:18px;z-index:50;border:0;border-radius:12px;
-      background:linear-gradient(90deg,#ff8800,#ffb35a);color:#111;
-      padding:10px 12px;font-weight:900;cursor:pointer;box-shadow:var(--shadow);
-      opacity:.9;transition:transform .12s ease, opacity .12s ease;
-    }
+    #topBtn{position:fixed;right:18px;bottom:18px;z-index:50;border:0;border-radius:12px;background:linear-gradient(90deg,#ff8800,#ffb35a);color:#111;padding:10px 12px;font-weight:900;cursor:pointer;box-shadow:var(--shadow);opacity:.9;transition:transform .12s ease,opacity .12s ease}
     #topBtn:hover{transform:translateY(-2px);opacity:1}
-
-    /* Responsive Breite */
-    @media (max-width:640px){
-      .header{padding-top:18px}
-      .logo{height:54px}
-    }
+    @media (max-width:640px){.logo{height:54px}.header{padding-top:18px}}
   </style>
 </head>
 <body>
 
   <!-- Header -->
   <div class="header">
-    <!-- Dein Logo: lade logo.png ins Repo (ohne weißen Hintergrund) -->
     <img class="logo" src="logo.png" alt="Sona City Logo">
     <div class="title-wrap">
       <h1 class="title">Sona City Regelwerk</h1>
@@ -125,53 +62,167 @@
   <!-- Inhalt -->
   <main class="wrap">
 
+    <!-- §1 Allgemein -->
     <details>
-      <summary>§0 Grundsätze</summary>
+      <summary>§1 Allgemein</summary>
       <div class="panel">
-        <p>Faires, glaubwürdiges, storybasiertes RP. Respekt, Qualität, Transparenz.</p>
+        <div class="subhead">§1 Allgemein I</div>
+        <ul>
+          <li><b>§1.1</b> Beim Beitritt auf den Server akzeptiert man automatisch das Regelwerk.</li>
+          <li><b>§1.2</b> Das Server-Team behält sich angemessene Strafen bei Missachtung vor; diese sind zu akzeptieren.</li>
+          <li><b>§1.3</b> Den Anweisungen eines Teammitgliedes ist jederzeit Folge zu leisten.</li>
+          <li><b>§1.4</b> Zweitaccounts und Account-Sharing sind nicht gestattet.</li>
+          <li><b>§1.5</b> Kein „Auge um Auge“. Regelbruch niemals mit Regelbruch beantworten – Clip machen und in den Support.</li>
+          <li><b>§1.6</b> Modding/Cheating oder spielvorteilhafte Dateien (z. B. Fast-Fire, No-Props, No-Bushes) sind streng verboten. Grauzonen-Suche unterlassen.</li>
+        </ul>
+
+        <div class="subhead">§1 Allgemein II</div>
+        <ul>
+          <li><b>§1.7</b> Sexismus, sexuelle Belästigung, Diskriminierung und Rassismus sind untersagt und können zum Perma-Ban führen (gilt auch für Steam-/IC-Namen).</li>
+          <li><b>§1.8</b> „Hurensohn“, Beleidigungen an Tote und andere sehr schwere Beleidigungen sind verboten und werden nach Ermessen bestraft.</li>
+        </ul>
       </div>
     </details>
 
+    <!-- §2 Ingame-Regelwerk -->
     <details>
-      <summary>§1 Allgemeine Regeln</summary>
+      <summary>§2 Ingame-Regelwerk</summary>
       <div class="panel">
-        <p>IC/OOC trennen; keine Meta-/Power-Aktionen; NLR beachten; Respekt (IC/OOC).</p>
+        <div class="subhead">§2 Ingame Regelwerk I</div>
+        <ul>
+          <li><b>§2.1</b> Schießen ohne Schusscall ist verboten (RDM). Beispiele: „Hände hoch sonst knallt’s“, „Aussteigen oder ich schieße“.</li>
+          <li><b>§2.2</b> Ein Schusscall hält 5 Minuten. Nach dem eigenen Tod verfällt er. Zielen ist <u>kein</u> Call.</li>
+          <li><b>§2.3</b> Keine Reaktionszeitpflicht – jedoch während des Calls nicht schon losschießen.</li>
+          <li><b>§2.4</b> Massencalls sind nicht gestattet (z. B. „Alle Hände hoch …“).</li>
+          <li><b>§2.5</b> Unklare Calls („Hände knallt“, „… oder Fortnite“) sind nicht erlaubt.</li>
+          <li><b>§2.6</b> Das Klauen fremder Fahrzeuge validiert einen automatischen Schusscall.</li>
+        </ul>
+
+        <div class="subhead">§2 Ingame Regelwerk II</div>
+        <ul>
+          <li><b>§2.7</b> Neuer Call nötig, sobald alle einer Partei am Boden liegen; wer nach Tod neu anfährt, muss neu callen/neu gecallt werden.</li>
+          <li><b>§2.8</b> Unter der Brücke am Medical Department (hinter der grünen Zone Richtung Würfelpark) ist Schießen auch mit Call verboten.</li>
+          <li><b>§2.9</b> Bewusstes Überfahren ist verboten (VDM).</li>
+          <li><b>§2.10</b> Drive-by ist erlaubt.</li>
+          <li><b>§2.11</b> Drittpartei ist nicht gestattet. Mindestens drei Erkennungsmerkmale nötig, um als Gruppierung zu gelten.</li>
+          <li><b>§2.12</b> Unnötiges Schlagen während aktiver Schussgefechte (reines Nerven) ist untersagt.</li>
+          <li><b>§2.13</b> Bugabuse strengstens verboten (z. B. schießen mit erhobenen Händen, Kleidung im Gefecht ausziehen).</li>
+        </ul>
+
+        <div class="subhead">§2 Ingame Regelwerk III</div>
+        <ul>
+          <li><b>§2.14</b> Dächer/Container/Highgrounds zum Runterschießen sind tabu (auch bei Base-Raids; <i>nur</i> Gangwars ausgenommen).</li>
+          <li><b>§2.15</b> Soundboard nur, wenn niemand gestört wird; Inhalte gemäß §1.5 werden streng sanktioniert.</li>
+          <li><b>§2.16</b> Frauenskins nur für Frauen. Bei Verweigerung → Trolling. Gleiches gilt für Standard „Caillou“-Outfit, Aduty als Nicht-Teamler, durchsichtige Körperteile.</li>
+        </ul>
       </div>
     </details>
 
+    <!-- §3 Safezones -->
     <details>
-      <summary>§2 Interaktion & RP</summary>
+      <summary>§3 Safezones</summary>
       <div class="panel">
-        <p>Konflikte zuerst im RP lösen; Geiseln/Überfälle mit Mindest-RP; Eskalation realistisch.</p>
+        <ul>
+          <li><b>§3.1</b> Safezones: kein Call, kein Schießen, keine Provokation. Safezones sind:
+            <ul>
+              <li>Spawn</li><li>Medical Departments</li><li>Kleidungsladen</li><li>Waffenläden</li>
+            </ul>
+          </li>
+          <li><b>§3.2</b> Abcampen von Safezones ist untersagt. Calls aus/in Safezones sind ungültig (RDM).</li>
+        </ul>
       </div>
     </details>
 
+    <!-- §4 Killzone -->
     <details>
-      <summary>§3 Fraktionen</summary>
+      <summary>§4 Killzone</summary>
       <div class="panel">
-        <p>Klare Ränge/Aufgaben; Gebietskonflikte mit Grundlage; Material verantwortungsvoll.</p>
+        <ul>
+          <li><b>§4.1</b> In der Killzone sind Schussankündigungen nicht nötig.</li>
+          <li><b>§4.2</b> Abcampen der Zone/des Spawnpunktes ist verboten.</li>
+          <li><b>§4.3</b> Eigen- und Gegenbeschuss erst ab Eintritt in die rote Zone.</li>
+          <li><b>§4.4</b> Callen außerhalb der roten Zone ist zu unterlassen.</li>
+          <li><b>§4.5</b> Wer die rote Zone betritt, darf sie nicht verlassen; außerhalb getötet zu werden ist dann kein Regelbruch.</li>
+        </ul>
       </div>
     </details>
 
+    <!-- §5 Gangwar -->
     <details>
-      <summary>§4 Staatsfraktionen</summary>
+      <summary>§5 Gangwar</summary>
       <div class="panel">
-        <p>Verhältnismäßigkeit; Dokumentation; Korruption nur via Whitelist & Story-Plan.</p>
+        <div class="subhead">§5 Gangwar I</div>
+        <ul>
+          <li><b>§5.1</b> Labore dürfen ganztägig angegriffen werden (Regel §5.8 beachten).</li>
+          <li><b>§5.2</b> Zone anfahren/verteidigen ist Pflicht.</li>
+          <li><b>§5.3</b> Kämpfen nur <u>in</u> der Zone; nicht von außen rein bzw. von innen raus schießen.</li>
+          <li><b>§5.4</b> Nach Betreten der roten Zone ist Verlassen untersagt; sonst Gegenbeschuss zu erwarten.</li>
+          <li><b>§5.5</b> Kleidung im GW nicht so ändern, dass Zuordnung unmöglich ist – direkte Bestrafung möglich.</li>
+          <li><b>§5.6</b> Mindestzahlen: 15 Angreifer + 15 Verteidiger online; Teilnahme nur mit Fraktionsjob (sonst Tod beim Betreten).</li>
+        </ul>
+
+        <div class="subhead">§5 Gangwar II</div>
+        <ul>
+          <li><b>§5.7</b> „Nicht mehr anfahren“ in den letzten Minuten, um Punkte zu verhindern, wird nicht geduldet (Fraktionswarn möglich).</li>
+          <li><b>§5.8</b> Gangwar nur nach frühzeitiger Absprache im Frakleader-Chat; für genügend Mitglieder sorgen. Verstöße → Warn für die Fraktion.</li>
+          <li><b>§5.9</b> Campen/Baiten kurz vor der Zone ist nicht gestattet – Zone unverzüglich betreten.</li>
+          <li><b>§5.10</b> Trashtalk/Beleidigungen nach Möglichkeit unterlassen; bei starkem Ausmaß Bestrafung nach Ermessen.</li>
+        </ul>
       </div>
     </details>
 
+    <!-- §6 Fraktion -->
     <details>
-      <summary>§5 Support & Strafen</summary>
+      <summary>§6 Fraktion</summary>
       <div class="panel">
-        <p>Beweise sachlich (Clip/Zeit/Beteiligte); Sanktionsleiter nach Schwere & Wiederholung.</p>
+        <ul>
+          <li><b>§6.1</b> Infos zur Fraktionsgründung im Discord-Channel <b>#fraktions-announce</b>.</li>
+          <li><b>§6.2</b> Fraktionslimit: 50 Mitglieder. Bei Überschreitung zeitnah reduzieren.</li>
+          <li><b>§6.3</b> Zivilisten (ohne Fraktion) dürfen nur max. 5-er Gruppen bilden; Erkennungsmerkmale beachten. Nackt-Trick zählt nicht → Drittpartei/RDM möglich.</li>
+          <li><b>§6.4</b> Fraktionswarn läuft nach 1 Woche ab.</li>
+          <li><b>§6.5</b> Dauercalls zwischen Fraktionen nur nach Absprache (am besten im Frakleader-Chat dokumentieren). Spawntrappen bleibt verboten.</li>
+          <li><b>§6.6</b> Betreten von Fraktionsanwesen gilt als Bedrohung und entspricht einem Schusscall.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- §7 Support -->
+    <details>
+      <summary>§7 Support</summary>
+      <div class="panel">
+        <ul>
+          <li><b>§7.1</b> Clips max. 24 h alt; Clip nötig, damit gehandelt werden kann.</li>
+          <li><b>§7.2</b> Für Rücknahme einer Strafe ist ein Gegenclip erforderlich.</li>
+          <li><b>§7.3</b> Aktives Diskutieren mit Teamlern unterlassen; Supportfall kann beendet werden.</li>
+          <li><b>§7.4</b> Respekt im Support – gegenüber Teamlern und Gegenseite.</li>
+          <li><b>§7.5</b> Eigensupport ist erlaubt.</li>
+          <li><b>§7.6</b> Teammitglieder im Aduty ignorieren, solange sie euch nicht ansprechen.</li>
+          <li><b>§7.7</b> Support stören (Geräusche, Soundboards, unnötiges Töten) strengstens verboten.</li>
+          <li><b>§7.8</b> Banns/Warns nur durch Teammitglieder anzudrohen.</li>
+        </ul>
+      </div>
+    </details>
+
+    <!-- §8 Discord -->
+    <details>
+      <summary>§8 Discord</summary>
+      <div class="panel">
+        <ul>
+          <li><b>§8.1</b> Discord-Guidelines sind einzuhalten.</li>
+          <li><b>§8.2</b> Private Informationen nicht teilen.</li>
+          <li><b>§8.3</b> Spam jeglicher Art → Mute.</li>
+          <li><b>§8.4</b> Einladungslinks (auch per PN) sind untersagt; Fremdwerbung → permanenter Bann.</li>
+          <li><b>§8.5</b> Freundlicher Umgangston.</li>
+          <li><b>§8.6</b> Werbung verboten; Mute/Bann möglich.</li>
+          <li><b>§8.7</b> Projektleitung nicht pingen.</li>
+          <li><b>§8.8</b> Teammitglieder in Tickets nicht pingen.</li>
+        </ul>
       </div>
     </details>
 
     <footer>© 2025 Sona City — Regelwerk • Alle Rechte vorbehalten.</footer>
   </main>
 
-  <!-- Nach oben -->
   <button id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
-
 </body>
 </html>
