@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sona City – Regelwerk</title>
+<style>
+:root{
+  --bg:#0f0f0f;
+  --card:#1b1b1b;
+  --text:#eaeaea;
+  --accent:#ff8800;
+  --radius:12px;
+  --maxw:900px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:system-ui,Roboto,Arial,sans-serif;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding:40px 12px;
+}
+.container{
+  width:100%;
+  max-width:var(--maxw);
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+header{text-align:center;margin-bottom:20px;}
+header h1{color:var(--accent);font-size:32px;margin-bottom:6px;}
+header p{color:#bbb;font-size:14px;}
+
+.accordion{
+  background:var(--card);
+  border:1px solid #262626;
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+}
+.accordion button{
+  width:100%;
+  background:transparent;
+  border:none;
+  text-align:left;
+  color:var(--accent);
+  font-size:20px;
+  padding:16px 20px;
+  cursor:pointer;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.accordion button:hover{background:#222;}
+.accordion button span{transition:transform .3s;}
+.accordion button.active span{transform:rotate(45deg);}
+.panel{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height .4s ease;
+  background:#151515;
+  border-top:1px solid #262626;
+}
+.panel p, .panel ul{
+  padding:16px 24px;
+  font-size:15px;
+  line-height:1.6;
+}
+ul{margin-left:20px;}
+.footer{text-align:center;margin-top:30px;opacity:.6;font-size:13px;}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1>Sona City Regelwerk</h1>
+    <p>Version 1.0 – Stand: 07.11.2025</p>
+  </header>
+
+  <div class="accordion">
+    <button>§0 Grundsätze <span>＋</span></button>
+    <div class="panel">
+      <p>Das Ziel von <b>Sona City</b> ist faires, glaubwürdiges und storybasiertes Roleplay. 
+      Respekt, Qualität und Transparenz stehen an erster Stelle.</p>
+      <p>⚠️ Hinweis: Alle Regeln gelten serverweit. Ausnahmen müssen <i>vorher</i> vom Management bestätigt werden.</p>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button>§1 Allgemeine Regeln <span>＋</span></button>
+    <div class="panel">
+      <ul>
+        <li><b>Namen & Voice:</b> Klare Namen, funktionierendes Mikro; keine Störgeräusche.</li>
+        <li><b>Meta/Powergaming:</b> OOC-Infos nicht IC nutzen; keine unrealistischen Handlungen.</li>
+        <li><b>NLR:</b> Nach Tod keine Erinnerungen; Tatort 30 Minuten meiden.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button>§2 Interaktion & RP <span>＋</span></button>
+    <div class="panel">
+      <ul>
+        <li><b>Konflikte:</b> Erst RP-Lösung suchen, dann Support.</li>
+        <li><b>Geiseln/Überfälle:</b> Mindest-RP, klare Forderungen, realistische Flucht.</li>
+        <li><b>Schusswaffen:</b> Letzte Eskalationsstufe; Ansagen & Konsequenzen beachten.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button>§3 Fraktionen <span>＋</span></button>
+    <div class="panel">
+      <ul>
+        <li><b>Struktur:</b> Klare Ränge & Aufgaben; Führung haftet für Mitglieder.</li>
+        <li><b>Gebiete:</b> Konflikte nur mit RP-Grundlage.</li>
+        <li><b>Waffen/Material:</b> Interne Verteilung & Verantwortung.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button>§4 Staatsfraktionen <span>＋</span></button>
+    <div class="panel">
+      <ul>
+        <li><b>Verhältnismäßigkeit:</b> Deeskalation vor Zwang.</li>
+        <li><b>Einsätze:</b> Dokumentation & Bodycam-Regeln serverweit.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="accordion">
+    <button>§5 Support & Strafen <span>＋</span></button>
+    <div class="panel">
+      <p>Beweise sachlich einreichen (Clip, Zeitpunkt, Beteiligte). 
+      Strafen richten sich nach Schwere, Wiederholung und Einsicht.</p>
+      <ul>
+        <li>Verwarnung → Kick → Time-Ban → Permanenter Ausschluss</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="footer">© 2025 Sona City – Regelwerk | Alle Rechte vorbehalten.</p>
+</div>
+
+<script>
+const acc = document.querySelectorAll(".accordion button");
+acc.forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    btn.classList.toggle("active");
+    const panel = btn.nextElementSibling;
+    const icon = btn.querySelector("span");
+    if(panel.style.maxHeight){
+      panel.style.maxHeight = null;
+      icon.textContent = "＋";
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+      icon.textContent = "−";
+    }
+  });
+});
+</script>
+</body>
+</html>
