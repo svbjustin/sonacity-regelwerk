@@ -1,168 +1,177 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sona City – Regelwerk</title>
-<style>
-:root{
-  --bg:#0f0f0f;
-  --card:#1b1b1b;
-  --text:#eaeaea;
-  --accent:#ff8800;
-  --radius:12px;
-  --maxw:900px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:system-ui,Roboto,Arial,sans-serif;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  padding:40px 12px;
-}
-.container{
-  width:100%;
-  max-width:var(--maxw);
-  display:flex;
-  flex-direction:column;
-  gap:18px;
-}
-header{text-align:center;margin-bottom:20px;}
-header h1{color:var(--accent);font-size:32px;margin-bottom:6px;}
-header p{color:#bbb;font-size:14px;}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sona City Regelwerk</title>
 
-.accordion{
-  background:var(--card);
-  border:1px solid #262626;
-  border-radius:var(--radius);
-  overflow:hidden;
-  box-shadow:0 4px 20px rgba(0,0,0,.3);
-}
-.accordion button{
-  width:100%;
-  background:transparent;
-  border:none;
-  text-align:left;
-  color:var(--accent);
-  font-size:20px;
-  padding:16px 20px;
-  cursor:pointer;
-  font-weight:600;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.accordion button:hover{background:#222;}
-.accordion button span{transition:transform .3s;}
-.accordion button.active span{transform:rotate(45deg);}
-.panel{
-  max-height:0;
-  overflow:hidden;
-  transition:max-height .4s ease;
-  background:#151515;
-  border-top:1px solid #262626;
-}
-.panel p, .panel ul{
-  padding:16px 24px;
-  font-size:15px;
-  line-height:1.6;
-}
-ul{margin-left:20px;}
-.footer{text-align:center;margin-top:30px;opacity:.6;font-size:13px;}
-</style>
+  <!-- Favicon (kleines Tab-Icon) -->
+  <link rel="icon" type="image/png" href="logo.png" />
+
+  <style>
+    :root{
+      --bg:#0f0f0f;
+      --panel:#1a1a1a;
+      --text:#eaeaea;
+      --muted:#bdbdbd;
+      --accent:#ff8800;
+      --radius:12px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --maxw:980px;
+    }
+
+    /* Base */
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;scroll-behavior:smooth}
+    body{display:flex;flex-direction:column;align-items:center;opacity:0;animation:fadeIn .6s ease forwards}
+    @keyframes fadeIn{to{opacity:1}}
+
+    /* Header mit Logo */
+    .header{
+      width:100%;
+      max-width:var(--maxw);
+      display:flex;
+      align-items:center;
+      gap:14px;
+      padding:28px 18px 0;
+    }
+    .logo{
+      height:64px;width:auto;display:block;image-rendering:auto;
+    }
+    .title-wrap{display:flex;flex-direction:column;gap:4px}
+    .title{
+      margin:0;line-height:1;
+      font-size: clamp(28px, 4.2vw, 44px);
+      font-weight:800;letter-spacing:.2px;
+      /* animierter Verlauf im Text */
+      background:linear-gradient(90deg,#ff8800,#ff2e7a,#8a2eff,#ff8800);
+      background-size:300% 100%;
+      -webkit-background-clip:text;background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:shift 8s linear infinite;
+    }
+    @keyframes shift{0%{background-position:0% 50%}100%{background-position:100% 50%}}
+
+    .version{margin:0;color:var(--muted);font-size:13px}
+
+    /* Content */
+    .wrap{
+      width:100%;max-width:var(--maxw);padding:20px 18px 80px;display:flex;flex-direction:column;gap:14px
+    }
+
+    /* §-Karten (details/summary) */
+    details{
+      background:var(--panel);
+      border:1px solid #232323;border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+      overflow:hidden;
+    }
+    details:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 34px rgba(0,0,0,.45), 0 0 12px rgba(255,136,0,.18);
+      border-color:#2b2b2b;
+    }
+    summary{
+      list-style:none;cursor:pointer;user-select:none;outline:none;
+      font-weight:700;font-size:16px;color:var(--accent);
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;
+    }
+    /* Plus/Minus Symbol */
+    summary::after{
+      content:"+";font-weight:900;color:var(--accent);
+      transition:transform .2s ease, opacity .2s ease;
+    }
+    details[open] summary::after{transform:rotate(45deg);}
+
+    .panel{
+      padding:0 18px 14px 18px;color:var(--muted);font-size:15px;line-height:1.6;
+      animation:reveal .25s ease;
+    }
+    @keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+
+    /* Footer */
+    footer{margin-top:24px;text-align:center;color:#8a8a8a;font-size:12px}
+
+    /* „Nach oben“-Button */
+    #topBtn{
+      position:fixed;right:18px;bottom:18px;z-index:50;border:0;border-radius:12px;
+      background:linear-gradient(90deg,#ff8800,#ffb35a);color:#111;
+      padding:10px 12px;font-weight:900;cursor:pointer;box-shadow:var(--shadow);
+      opacity:.9;transition:transform .12s ease, opacity .12s ease;
+    }
+    #topBtn:hover{transform:translateY(-2px);opacity:1}
+
+    /* Responsive Breite */
+    @media (max-width:640px){
+      .header{padding-top:18px}
+      .logo{height:54px}
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-  <header>
-    <h1>Sona City Regelwerk</h1>
-    <p>Version 1.0 – Stand: 07.11.2025</p>
-  </header>
 
-  <div class="accordion">
-    <button>§0 Grundsätze <span>＋</span></button>
-    <div class="panel">
-      <p>Das Ziel von <b>Sona City</b> ist faires, glaubwürdiges und storybasiertes Roleplay. 
-      Respekt, Qualität und Transparenz stehen an erster Stelle.</p>
-      <p>⚠️ Hinweis: Alle Regeln gelten serverweit. Ausnahmen müssen <i>vorher</i> vom Management bestätigt werden.</p>
+  <!-- Header -->
+  <div class="header">
+    <!-- Dein Logo: lade logo.png ins Repo (ohne weißen Hintergrund) -->
+    <img class="logo" src="logo.png" alt="Sona City Logo">
+    <div class="title-wrap">
+      <h1 class="title">Sona City Regelwerk</h1>
+      <p class="version">Version 1.0 — Stand: 07.11.2025</p>
     </div>
   </div>
 
-  <div class="accordion">
-    <button>§1 Allgemeine Regeln <span>＋</span></button>
-    <div class="panel">
-      <ul>
-        <li><b>Namen & Voice:</b> Klare Namen, funktionierendes Mikro; keine Störgeräusche.</li>
-        <li><b>Meta/Powergaming:</b> OOC-Infos nicht IC nutzen; keine unrealistischen Handlungen.</li>
-        <li><b>NLR:</b> Nach Tod keine Erinnerungen; Tatort 30 Minuten meiden.</li>
-      </ul>
-    </div>
-  </div>
+  <!-- Inhalt -->
+  <main class="wrap">
 
-  <div class="accordion">
-    <button>§2 Interaktion & RP <span>＋</span></button>
-    <div class="panel">
-      <ul>
-        <li><b>Konflikte:</b> Erst RP-Lösung suchen, dann Support.</li>
-        <li><b>Geiseln/Überfälle:</b> Mindest-RP, klare Forderungen, realistische Flucht.</li>
-        <li><b>Schusswaffen:</b> Letzte Eskalationsstufe; Ansagen & Konsequenzen beachten.</li>
-      </ul>
-    </div>
-  </div>
+    <details>
+      <summary>§0 Grundsätze</summary>
+      <div class="panel">
+        <p>Faires, glaubwürdiges, storybasiertes RP. Respekt, Qualität, Transparenz.</p>
+      </div>
+    </details>
 
-  <div class="accordion">
-    <button>§3 Fraktionen <span>＋</span></button>
-    <div class="panel">
-      <ul>
-        <li><b>Struktur:</b> Klare Ränge & Aufgaben; Führung haftet für Mitglieder.</li>
-        <li><b>Gebiete:</b> Konflikte nur mit RP-Grundlage.</li>
-        <li><b>Waffen/Material:</b> Interne Verteilung & Verantwortung.</li>
-      </ul>
-    </div>
-  </div>
+    <details>
+      <summary>§1 Allgemeine Regeln</summary>
+      <div class="panel">
+        <p>IC/OOC trennen; keine Meta-/Power-Aktionen; NLR beachten; Respekt (IC/OOC).</p>
+      </div>
+    </details>
 
-  <div class="accordion">
-    <button>§4 Staatsfraktionen <span>＋</span></button>
-    <div class="panel">
-      <ul>
-        <li><b>Verhältnismäßigkeit:</b> Deeskalation vor Zwang.</li>
-        <li><b>Einsätze:</b> Dokumentation & Bodycam-Regeln serverweit.</li>
-      </ul>
-    </div>
-  </div>
+    <details>
+      <summary>§2 Interaktion & RP</summary>
+      <div class="panel">
+        <p>Konflikte zuerst im RP lösen; Geiseln/Überfälle mit Mindest-RP; Eskalation realistisch.</p>
+      </div>
+    </details>
 
-  <div class="accordion">
-    <button>§5 Support & Strafen <span>＋</span></button>
-    <div class="panel">
-      <p>Beweise sachlich einreichen (Clip, Zeitpunkt, Beteiligte). 
-      Strafen richten sich nach Schwere, Wiederholung und Einsicht.</p>
-      <ul>
-        <li>Verwarnung → Kick → Time-Ban → Permanenter Ausschluss</li>
-      </ul>
-    </div>
-  </div>
+    <details>
+      <summary>§3 Fraktionen</summary>
+      <div class="panel">
+        <p>Klare Ränge/Aufgaben; Gebietskonflikte mit Grundlage; Material verantwortungsvoll.</p>
+      </div>
+    </details>
 
-  <p class="footer">© 2025 Sona City – Regelwerk | Alle Rechte vorbehalten.</p>
-</div>
+    <details>
+      <summary>§4 Staatsfraktionen</summary>
+      <div class="panel">
+        <p>Verhältnismäßigkeit; Dokumentation; Korruption nur via Whitelist & Story-Plan.</p>
+      </div>
+    </details>
 
-<script>
-const acc = document.querySelectorAll(".accordion button");
-acc.forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    btn.classList.toggle("active");
-    const panel = btn.nextElementSibling;
-    const icon = btn.querySelector("span");
-    if(panel.style.maxHeight){
-      panel.style.maxHeight = null;
-      icon.textContent = "＋";
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-      icon.textContent = "−";
-    }
-  });
-});
-</script>
+    <details>
+      <summary>§5 Support & Strafen</summary>
+      <div class="panel">
+        <p>Beweise sachlich (Clip/Zeit/Beteiligte); Sanktionsleiter nach Schwere & Wiederholung.</p>
+      </div>
+    </details>
+
+    <footer>© 2025 Sona City — Regelwerk • Alle Rechte vorbehalten.</footer>
+  </main>
+
+  <!-- Nach oben -->
+  <button id="topBtn" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</button>
+
 </body>
 </html>
