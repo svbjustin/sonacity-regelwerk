@@ -1,418 +1,342 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sona City Regelwerk</title>
-  <link rel="icon" type="image/png" href="logo.png" />
-
+  <title>Sona City – Regelwerk</title>
+  <meta name="description" content="Offizielles Regelwerk von Sona City Roleplay.">
+  <link rel="icon" href="assets/favicon.png">
   <style>
     :root{
       --bg:#0f0f0f;
-      --panel:#1a1a1a;
-      --panel-2:#161616;
-      --text:#eaeaea;
-      --muted:#bdbdbd;
-      --accent:#ff8c1a; /* dunkel-orange */
-      --accent-light:#ffb347; /* hell-orange */
-      --radius:12px;
-      --shadow:0 10px 30px rgba(0,0,0,.35);
-      --maxw:980px;
+      --panel:#171717;
+      --panel-2:#1c1c1c;
+      --text:#e6e6e6;
+      --muted:#a7a7a7;
+      --accent:#ff8a00;        /* hellorange */
+      --accent-2:#ff4d00;      /* dunkelorange */
+      --ring:rgba(255,138,0,.35);
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
-
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
-      scroll-behavior:smooth}
-    body{display:flex;flex-direction:column;align-items:center;opacity:0;animation:fadeIn .5s ease forwards}
-    @keyframes fadeIn{to{opacity:1}}
-
-    /* Header */
-    .header{
-      width:100%;max-width:var(--maxw);
-      display:flex;align-items:center;gap:16px;justify-content:center;
-      padding:28px 18px 0;
-    }
-    .logo{height:64px;width:auto;display:block;background:transparent}
-    .title-wrap{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
-    .title{
-      margin:0;line-height:1;font-weight:900;letter-spacing:.2px;
-      font-size:clamp(28px,4.6vw,52px);
-      /* Zweifarbiger Orange-Verlauf mit leichtem Shimmer */
-      background:linear-gradient(90deg,var(--accent-light),var(--accent));
-      background-size:200% 100%;
-      -webkit-background-clip:text;background-clip:text;
-      -webkit-text-fill-color:transparent;
-      animation:titleShimmer 6s linear infinite;
-      text-shadow:0 0 12px rgba(255,140,26,.25);
-    }
-    @keyframes titleShimmer{
-      0%{background-position:0% 50%}
-      100%{background-position:100% 50%}
-    }
-    .version{margin:0;color:var(--muted);font-size:13px}
-
-    /* Layout */
-    .wrap{
-      width:100%;max-width:var(--maxw);
-      padding:20px 18px 80px;
-      display:flex;flex-direction:column;gap:14px;
+    html,body{height:100%}
+    body{
+      margin:0;background:radial-gradient(1200px 800px at 70% -100%, #141414 0%, #0f0f0f 50%, #0b0b0b 100%);
+      color:var(--text); font:500 16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial;
     }
 
-    /* Hauptkategorie (Accordion) */
-    details.section{
-      background:var(--panel);
-      border:1px solid #232323;border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
-      overflow:hidden;
+    /* Sticky Header */
+    .topbar{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(1.4) blur(8px);
+      background:linear-gradient(180deg, rgba(18,18,18,.92), rgba(18,18,18,.70));
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
-    details.section:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 34px rgba(0,0,0,.45), 0 0 10px rgba(255,140,26,.18);
-      border-color:#2b2b2b;
+    .wrap{max-width:1100px;margin:auto;padding:14px 18px;display:flex;gap:16px;align-items:center}
+    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .logo img{height:34px;width:auto;display:block}
+    .brand{
+      font-weight:800; letter-spacing:.3px;
+      background:linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow:0 0 20px rgba(255,140,0,.18);
+      font-size:20px;
     }
-    summary.head{
-      list-style:none;cursor:pointer;user-select:none;outline:none;
-      display:flex;align-items:center;justify-content:space-between;
-      gap:12px;
-      padding:16px 18px;
-      font-weight:800;font-size:17px;
-      color:var(--accent);
+    .nav{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
+    .nav a{
+      color:var(--muted); text-decoration:none; padding:8px 12px; border-radius:10px;
+      transition:.2s;
     }
-    summary.head::after{
-      content:"+";
-      font-weight:900;color:var(--accent);flex:0 0 auto;
-      transition:transform .2s ease,opacity .2s ease;
-    }
-    details.section[open] summary.head::after{transform:rotate(45deg)}
+    .nav a.active,.nav a:hover{color:#fff;background:rgba(255,138,0,.10); box-shadow:0 0 0 2px var(--ring) inset}
 
-    .panel{
-      padding:0 18px 16px 18px;
-      color:var(--muted);font-size:15px;line-height:1.65;
-      animation:reveal .25s ease;
-      display:flex;flex-direction:column;gap:12px;
+    /* Search */
+    .search{
+      display:flex; align-items:center; gap:10px; margin-left:16px; flex:0 0 320px; max-width:40%;
+      background:#121212; border:1px solid rgba(255,255,255,.07); border-radius:12px; padding:8px 10px;
     }
-    @keyframes reveal{from{opacity:0;transform:translateY(-4px)} to{opacity:1;transform:none}}
-
-    /* Unterkategorien (nested) */
-    details.sub{
-      background:var(--panel-2);
-      border:1px solid #232323; border-radius:10px;
-      margin:4px 0; overflow:hidden;
+    .search input{
+      all:unset; flex:1; color:#ddd; font:500 14px/1 system-ui;
     }
-    summary.subhead{
-      list-style:none;cursor:pointer;user-select:none;outline:none;
-      padding:12px 14px;
-      display:flex;align-items:center;justify-content:space-between;
-      font-weight:700;font-size:15px;color:#ffb978;
+
+    /* Page container */
+    .container{max-width:1100px;margin:26px auto 120px;padding:0 18px}
+
+    h1{
+      margin:18px 0 8px; font-size:38px; line-height:1.1; font-weight:900;
+      background:linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      text-shadow:0 0 35px rgba(255,122,0,.15);
     }
-    summary.subhead::after{
-      content:"+";
-      color:#ffb978;font-weight:900;
-      transition:transform .2s ease
+    .meta{color:var(--muted); font-size:14px}
+
+    /* Accordions */
+    .acc{margin:18px 0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow); background:transparent}
+    .acc .item{background:var(--panel); border-bottom:1px solid rgba(255,255,255,.05)}
+    .acc .hdr{
+      cursor:pointer; display:flex; align-items:center; justify-content:space-between;
+      padding:16px 18px; font-weight:700; letter-spacing:.2px;
+      transition:.2s; user-select:none;
     }
-    details.sub[open] summary.subhead::after{transform:rotate(45deg)}
+    .acc .hdr:hover{background:var(--panel-2)}
+    .acc .ic{width:26px;height:26px;display:grid;place-items:center;border-radius:8px;
+      color:#fff;background:linear-gradient(180deg,var(--accent),var(--accent-2));
+      box-shadow:0 5px 18px rgba(255,120,0,.35); flex:0 0 26px; margin-left:14px}
+    .acc .content{display:none;padding:0 18px 18px;background:var(--panel)}
+    .acc .item.open .content{display:block}
+    .acc .item.open .hdr{background:var(--panel-2); box-shadow:0 0 0 2px var(--ring) inset}
+    .acc p{margin:10px 0}
 
-    /* Listen */
-    ul{margin:6px 0 10px 18px}
-    li{margin:6px 0}
+    /* Sub-accordion */
+    .sub{margin:12px 0 0;border-radius:12px; overflow:hidden; border:1px solid rgba(255,255,255,.06)}
+    .sub .hdr{padding:12px 14px; font-weight:650}
+    .sub .content{padding:10px 14px}
 
-    footer{margin-top:24px;text-align:center;color:#8a8a8a;font-size:12px}
+    /* Links / lists */
+    a{color:#ffb266}
+    ul{margin:8px 0 12px 20px}
 
-    /* Mobile */
-    @media (max-width:640px){
-      .logo{height:54px}
-      .header{padding-top:18px}
+    /* Footer */
+    footer{margin:48px 0 30px;text-align:center;color:var(--muted);font-size:13px}
+
+    @media (max-width:820px){
+      .nav{order:3; width:100%}
+      .search{order:2; max-width:100%; flex:1}
+      .brand{font-size:18px}
+      .wrap{flex-wrap:wrap}
     }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <div class="header">
-    <!-- Falls dein Dateiname anders ist, hier anpassen -->
-    <img class="logo" src="logo.png" alt="Sona City Logo">
-    <div class="title-wrap">
-      <h1 class="title">Sona City Regelwerk</h1>
-      <p class="version">Version 1.0 — Stand: 07.11.2025</p>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="wrap">
+      <a class="logo" href="#top">
+        <img src="assets/logo.png" alt="Sona City Logo">
+        <span class="brand">Sona City</span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#allgemein">Allgemein</a>
+        <a href="#ingame">Ingame</a>
+        <a href="#safezones">Safe-/Killzones</a>
+        <a href="#gangwar">Gangwar</a>
+        <a href="#fraktionen">Fraktionen</a>
+        <a href="#support">Support</a>
+        <a href="#verbote">Verbote</a>
+      </nav>
+      <label class="search" title="Regeln durchsuchen">
+        🔎 <input id="q" placeholder="Suche im Regelwerk …" />
+      </label>
     </div>
-  </div>
+  </header>
 
-  <!-- Inhalt -->
-  <main class="wrap">
+  <main class="container" id="top">
+    <h1>Sona City Regelwerk</h1>
+    <div class="meta">Version 1.0 — Stand: <span id="stand"></span></div>
 
-    <!-- §1 Allgemeines -->
-    <details class="section" open>
-      <summary class="head">§1 Allgemeines</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Grundsätze & Geltung</summary>
-          <div class="panel">
-            <ul>
-              <li>Mit Betreten von <b>Sona City</b> akzeptierst du das gesamte Regelwerk. Unwissenheit schützt nicht vor Strafe.</li>
-              <li>Änderungen werden im Discord bekanntgegeben; jeder hält sich selbst auf dem aktuellen Stand.</li>
-              <li>Das Team entscheidet im Zweifel im Sinne fairen Roleplays; Anweisungen des Teams sind zu befolgen.</li>
-            </ul>
+    <!-- ALLGEMEIN -->
+    <section id="allgemein" class="acc" data-section>
+      <div class="item">
+        <div class="hdr">§1 Allgemeines <span class="ic">+</span></div>
+        <div class="content">
+          <div class="sub">
+            <div class="item">
+              <div class="hdr">§1.1 – Zustimmung & Geltung <span class="ic">+</span></div>
+              <div class="content">
+                <p>Mit dem Beitritt auf den Server akzeptierst du das gesamte Regelwerk. Das Team darf bei Verstößen angemessene Maßnahmen ergreifen; Anweisungen des Teams sind jederzeit zu befolgen.</p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="hdr">§1.2 – Zweitaccounts, Cheating, Grauzonen <span class="ic">+</span></div>
+              <div class="content">
+                <p>Account-Sharing oder Zweitaccounts sind untersagt. Cheats/Modding, Macro-Vorteile und das Ausnutzen von Grauzonen sind verboten und werden streng sanktioniert.</p>
+              </div>
+            </div>
+            <div class="item">
+              <div class="hdr">§1.3 – Umgang & Sprache <span class="ic">+</span></div>
+              <div class="content">
+                <p>Diskriminierung, Rassismus, sexualisierte oder extrem ehrverletzende Beleidigungen sind untersagt und führen je nach Härte zu massiven Strafen bis zum Ausschluss.</p>
+              </div>
+            </div>
           </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">Cheats, Exploits & Grauzonen</summary>
-          <div class="panel">
-            <ul>
-              <li>Cheats, Mod-Menüs, Makros, Crosshairs, Bugusing oder unfairer Vorteil ⇒ <b>Perma</b>.</li>
-              <li>Grauzonen suchen/ausnutzen ist verboten.</li>
-              <li>Accounts teilen oder Zweitaccounts nutzen ist untersagt.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">Umgang & Schutz</summary>
-          <div class="panel">
-            <ul>
-              <li>Kein Rassismus, Sexismus, extreme Beleidigungen oder Belästigung – Sanktionen bis Perma.</li>
-              <li>Regelbruch nicht mit Regelbruch beantworten – <b>Clip</b> & Support.</li>
-            </ul>
-          </div>
-        </details>
-
+          <p class="meta">⚠️ Hinweis: Ein Regelbruch rechtfertigt keinen Gegen-Regelbruch. Clips → Support.</p>
+        </div>
       </div>
-    </details>
+    </section>
 
-    <!-- §2 Verhalten & Kommunikation -->
-    <details class="section">
-      <summary class="head">§2 Verhalten & Kommunikation</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Respekt & OOC</summary>
-          <div class="panel">
-            <ul>
-              <li>Respekt im Spiel/Discord ist Pflicht.</li>
-              <li>OOC im RP vermeiden (z. B. „RDM“, „Support“) – gilt als Breaking Character.</li>
-              <li>Privatdaten/Serverlinks/Spam/ungefragtes Pingen sind untersagt.</li>
-            </ul>
+    <!-- INGAME -->
+    <section id="ingame" class="acc" data-section>
+      <div class="item">
+        <div class="hdr">§2 Ingame-Regeln (Calls, Drittpartei, Bug-Abuse) <span class="ic">+</span></div>
+        <div class="content">
+          <div class="sub">
+            <div class="item">
+              <div class="hdr">§2.1 – Schusscalls & Dauer <span class="ic">+</span></div>
+              <div class="content">
+                <ul>
+                  <li>Schießen ohne klaren Call → RDM. Gültige Beispiele: „Hände hoch, sonst schieße ich“, „Aussteigen oder es knallt“.</li>
+                  <li>Call gilt max. 5 Minuten und erlischt beim Tod der Partei. Zielen ≠ Call.</li>
+                  <li>Massencalls („Alle Hände hoch …“) sind nicht gestattet.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="item">
+              <div class="hdr">§2.2 – Drittpartei & Verhalten im Gefecht <span class="ic">+</span></div>
+              <div class="content">
+                <ul>
+                  <li>Drittpartei ist untersagt; min. 3 identifizierbare Merkmale, um als Gruppe zu gelten.</li>
+                  <li>Unnötiges Schlagen im Gefecht oder Bug-Abuse (z. B. Schießen mit erhobenen Händen) ist verboten.</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">Audio & Skins</summary>
-          <div class="panel">
-            <ul>
-              <li>Soundboards nur ohne Störung; beleidigende Sounds verboten.</li>
-              <li>Skins & Verkleidungen nur RP-logisch; reines Provozieren ist untersagt.</li>
-              <li>Team im Aduty nicht ansprechen, außer du wirst angesprochen.</li>
-            </ul>
-          </div>
-        </details>
-
+          <p class="meta">Zonen unter der MD-Brücke sind selbst mit Call tabu.</p>
+        </div>
       </div>
-    </details>
+    </section>
 
-    <!-- §3 Ingame-Regeln -->
-    <details class="section">
-      <summary class="head">§3 Ingame-Regeln</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">RP-Grundsätze</summary>
-          <div class="panel">
-            <ul>
-              <li>RP zuerst: logisch, nachvollziehbar, realistisch.</li>
-              <li>Unrealistische Aktionen (Hochhaus-Sprünge, kaputte Autos fahren, Glitch-Moves) verboten.</li>
-              <li>Combat Logging/RP-Flucht ist untersagt.</li>
-            </ul>
+    <!-- SAFE/KILLZONES -->
+    <section id="safezones" class="acc" data-section>
+      <div class="item">
+        <div class="hdr">§3 Safezones / §4 Killzone <span class="ic">+</span></div>
+        <div class="content">
+          <p>In Safezones wird weder gecallt, geschossen noch provoziert. Abcampen ist untersagt; Calls aus/into Safezones sind ungültig.</p>
+          <div class="sub">
+            <div class="item">
+              <div class="hdr">Beispiele Safezones <span class="ic">+</span></div>
+              <div class="content">
+                <ul>
+                  <li>Spawn, Medical Departments, Kleidungsläden, Waffenläden, Meetingpoints, Werkstätten u. a.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="item">
+              <div class="hdr">Killzone-Regeln <span class="ic">+</span></div>
+              <div class="content">
+                <ul>
+                  <li>In Killzonen sind Calls nicht nötig; Spawn-/Zonen-Abcampen ist verboten.</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">RDM / VDM / Calls</summary>
-          <div class="panel">
-            <ul>
-              <li><b>RDM:</b> Töten ohne RP-Hintergrund/Call verboten.</li>
-              <li><b>VDM:</b> Überfahren/Rammen als Waffe verboten.</li>
-              <li>Schusscall <b>klar hörbar</b>; gültig <b>5 Min</b>; Reaktionszeit <b>3–5 s</b>; Zielen allein ≠ Call.</li>
-              <li>Massencalls („Alle Hände hoch …“) sind unzulässig.</li>
-              <li>Nach Tod/Neu-Anfahrt ist ein <b>neuer</b> Call nötig.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">Medics, Bewusstlosigkeit & NLR</summary>
-          <div class="panel">
-            <ul>
-              <li>Bewusstlose sprechen/handeln nicht; nichts abziehen.</li>
-              <li>Revive → 15 Min keine illegalen Aktionen.</li>
-              <li><b>NLR:</b> Krankenhaus-Spawn = keine Erinnerung, nicht zurück in dieselbe Situation.</li>
-              <li>Medics behandeln erst, wenn keine akute Gefahr mehr besteht.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">Raub, Geiseln, Staat</summary>
-          <div class="panel">
-            <ul>
-              <li>Raub braucht RP-Grund; reine Bereicherung ist unzulässig.</li>
-              <li>Geiseln realistisch ausspielen; max. Lösegeld: <b>$7.500</b>.</li>
-              <li>Staatliche Ausrüstung nicht entwenden/weitergeben.</li>
-              <li>Cop-Baiting ist verboten.</li>
-            </ul>
-          </div>
-        </details>
-
+        </div>
       </div>
-    </details>
+    </section>
 
-    <!-- §4 Safezones & Sperrzonen -->
-    <details class="section">
-      <summary class="head">§4 Safezones & Sperrzonen</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Safezones</summary>
-          <div class="panel">
-            <ul>
-              <li>Einreise/Spawn, Medical Departments, Würfelpark, Werkstätten/Tuner, Kleidung, Friseur, LifeInvader, Gericht.</li>
-              <li>In/aus Safezones keine Calls, kein Beschuss, keine Provokation.</li>
-              <li>Abcampen von Safezones ist streng untersagt.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">Sperrzonen & Fraktionsgebiete</summary>
-          <div class="panel">
-            <ul>
-              <li>Polizei-Liegenschaften, Militär, Staatsgefängnis, Ganganwesen/Hoods.</li>
-              <li>Unbefugtes Betreten von Fraktionsarealen gilt als Bedrohung.</li>
-              <li>Wiederholtes Campen ohne RP-Grund = Trolling.</li>
-            </ul>
-          </div>
-        </details>
-
+    <!-- GANGWAR -->
+    <section id="gangwar" class="acc" data-section>
+      <div class="item">
+        <div class="hdr">§5 Gangwar <span class="ic">+</span></div>
+        <div class="content">
+          <ul>
+            <li>Gekämpft wird nur in der Zone; rein/raus schießen ist unzulässig.</li>
+            <li>Kleider-Trick (unkenntlich machen) ist verboten und kann im GW direkt sanktioniert werden.</li>
+            <li>Teilnahme- und Online-Mindestzahlen gemäß Ankündigung/Fraktionsabsprache.</li>
+          </ul>
+          <p class="meta">Vor Start: Absprache im Frakleader-Chat; sonst Fraktionswarn möglich.</p>
+        </div>
       </div>
-    </details>
+    </section>
 
-    <!-- §5 Fraktionen & Gangwars -->
-    <details class="section">
-      <summary class="head">§5 Fraktionen & Gangwars</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Organisation & Limits</summary>
-          <div class="panel">
-            <ul>
-              <li>Fraktionsgründung nur mit Management-Genehmigung.</li>
-              <li>Fraktionslimit: <b>50</b> Mitglieder; Überschreitungen melden.</li>
-              <li>Zivilisten agieren max. zu <b>6</b> – mit Erkennungsmerkmalen (Kleidung/Fahrzeuge).</li>
-              <li>Fraktionswarn läuft nach <b>1 Woche</b> ab.</li>
-            </ul>
-          </div>
-        </details>
-
-        <details class="sub">
-          <summary class="subhead">Gangwar-Regeln</summary>
-          <div class="panel">
-            <ul>
-              <li>Abstimmung beider Seiten vor Start (Fraktionschat).</li>
-              <li>Mindestens <b>15</b> Spieler pro Fraktion anwesend.</li>
-              <li>Betrittst du die Zone → aktive Teilnahme; Verlassen = Sanktionen möglich.</li>
-              <li>Kleidung im Kampf nicht so ändern, dass Identität verschleiert wird.</li>
-              <li>Nach Tod kein Re-Join in laufendes GW.</li>
-            </ul>
-          </div>
-        </details>
-
+    <!-- FRAKTIONEN -->
+    <section id="fraktionen" class="acc" data-section>
+      <div class="item">
+        <div class="hdr">§6 Fraktionen & Zivilisten <span class="ic">+</span></div>
+        <div class="content">
+          <ul>
+            <li>Fraktionslimit, Warns, Dauercalls nur nach Absprache; Spawntrappen bleibt verboten.</li>
+            <li>Zivilisten dürfen max. zu fünft agieren, mit eindeutigen Merkmalen.</li>
+          </ul>
+        </div>
       </div>
-    </details>
+    </section>
 
-    <!-- §6 Support & Beweise -->
-    <details class="section">
-      <summary class="head">§6 Support & Beweise</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Clips & Ablauf</summary>
-          <div class="panel">
-            <ul>
-              <li>Videobeweis mit Ton erforderlich; Clips max. <b>24h</b> alt.</li>
-              <li>Support nach Ausspielen, nicht mittendrin.</li>
-              <li>Respektvoller Umgang; Stören eines Supportfalls verboten.</li>
-              <li>Aufzeichnen erlaubt; Veröffentlichen verboten.</li>
-              <li>Team hat das letzte Wort.</li>
-            </ul>
-          </div>
-        </details>
-
+    <!-- SUPPORT -->
+    <section id="support" class="acc" data-section>
+      <div class="item">
+        <div class="hdr">§7 Support (Beweise & Verhalten) <span class="ic">+</span></div>
+        <div class="content">
+          <ul>
+            <li>Beweis-Clips max. 24 h alt, Situation vollständig & mit Ton.</li>
+            <li>Respektvoller Umgang; Eigensupport erlaubt; Aduty wird ignoriert, außer angesprochen.</li>
+          </ul>
+        </div>
       </div>
-    </details>
+    </section>
 
-    <!-- §7 Allgemeine Verbote -->
-    <details class="section">
-      <summary class="head">§7 Allgemeine Verbote</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Übersicht</summary>
-          <div class="panel">
-            <ul>
-              <li>RDM, VDM, Meta, Power-RP, Fail-RP, Combat-Logging, Backseat-Gaming.</li>
-              <li>Hinrichtungen/Suizid nur nach Ticket & Genehmigung.</li>
-              <li>OOC-Rache oder gezieltes Aufsuchen wegen Supportentscheidungen ist untersagt.</li>
-            </ul>
-          </div>
-        </details>
-
+    <!-- VERBOTE -->
+    <section id="verbote" class="acc" data-section>
+      <div class="item">
+        <div class="hdr">§8 Allgemeine Verbote (RDM/VDM/Fail-/Meta-/Power-RP …) <span class="ic">+</span></div>
+        <div class="content">
+          <ul>
+            <li>RDM/VDM strikt untersagt.</li>
+            <li>Meta-Gaming, Power-RP, Combat-Logging, Ninja-RP verboten.</li>
+            <li>New-Life-Regel beachten (Krankenhaus vs. Reanimation).</li>
+          </ul>
+        </div>
       </div>
-    </details>
+    </section>
 
-    <!-- §8 Trolling & Baiting -->
-    <details class="section">
-      <summary class="head">§8 Trolling & Baiting</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Verhalten</summary>
-          <div class="panel">
-            <ul>
-              <li>Absichtliches Stören (Hupen/Schreien/Emote-Spam/Provozieren) ist verboten.</li>
-              <li>Cop-/Fraktions-Baiting untersagt; Behörden nicht „zum Spaß“ triggern.</li>
-              <li>Unrealistische Neon/Clown/Tiermasken-Outfits nur, wenn RP-logisch.</li>
-              <li>Blacklist-Wörter & Support-Anspielungen vermeiden.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </details>
-
-    <!-- §9 Sonstiges -->
-    <details class="section">
-      <summary class="head">§9 Sonstiges & Schlussbestimmungen</summary>
-      <div class="panel">
-
-        <details class="sub">
-          <summary class="subhead">Abschluss</summary>
-          <div class="panel">
-            <ul>
-              <li>Spielspaß & gutes RP stehen über allem – zerstöre nicht das Erlebnis anderer.</li>
-              <li>Regeländerungen nur über den offiziellen Discord-Kanal.</li>
-              <li>Mit dem Spielen erklärst du dich einverstanden, dass Voice zur Beweissicherung aufgezeichnet werden darf.</li>
-              <li>Regeln können sich jederzeit ändern; bleib informiert.</li>
-              <li>Im Zweifel entscheidet das Team <b>pro faires RP</b> & <b>pro Community</b>.</li>
-            </ul>
-          </div>
-        </details>
-
-      </div>
-    </details>
-
-    <footer>© 2025 Sona City — Regelwerk • Alle Rechte vorbehalten.</footer>
+    <footer>
+      © <span id="year"></span> Sona City — Regelwerk • Alle Rechte vorbehalten.
+    </footer>
   </main>
+
+  <script>
+    // Datum
+    const d=new Date();
+    document.getElementById('stand').textContent =
+      d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
+    document.getElementById('year').textContent = d.getFullYear();
+
+    // Accordion (inkl. Sub)
+    document.addEventListener('click', (e)=>{
+      const h = e.target.closest('.hdr');
+      if(!h) return;
+      const item = h.parentElement;
+      if(!item.classList.contains('item')) return;
+      item.classList.toggle('open');
+    });
+
+    // Smooth scroll + scroll spy
+    const links = [...document.querySelectorAll('.nav a')];
+    links.forEach(a=>{
+      a.addEventListener('click', e=>{
+        e.preventDefault();
+        const id = a.getAttribute('href');
+        const el = document.querySelector(id);
+        if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+      });
+    });
+    const sections = [...document.querySelectorAll('[data-section]')];
+    const spy = new IntersectionObserver(entries=>{
+      entries.forEach(ent=>{
+        if(ent.isIntersecting){
+          links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+ent.target.id));
+        }
+      });
+    },{threshold:.2, rootMargin:'-80px 0px -60% 0px'});
+    sections.forEach(s=>spy.observe(s));
+
+    // Suche
+    const q = document.getElementById('q');
+    q.addEventListener('input', ()=>{
+      const term = q.value.trim().toLowerCase();
+      // alle Items sichtbar machen
+      document.querySelectorAll('.acc .item').forEach(i=>i.style.display='');
+      if(!term){ return; }
+      document.querySelectorAll('.acc').forEach(acc=>{
+        let any=false;
+        acc.querySelectorAll('.item').forEach(it=>{
+          const text = it.textContent.toLowerCase();
+          const hit = text.includes(term);
+          it.style.display = hit? '':'none';
+          any = any || hit;
+        });
+        acc.style.display = any? '':'none';
+      });
+    });
+  </script>
 </body>
 </html>
