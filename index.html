@@ -1,420 +1,775 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Sona City – Regelwerk</title>
-  <meta name="description" content="Offizielles Regelwerk von Sona City Roleplay.">
-  <link rel="icon" href="assets/favicon.png">
-  <style>
-    :root{
-      --bg:#0f0f0f; --panel:#171717; --panel2:#1b1b1b;
-      --text:#eaeaea; --muted:#a9a9a9;
-      --o1:#ff8a00; --o2:#ff4d00; --ring:rgba(255,138,0,.35);
-      --r:14px; --sh:0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:#0d0d0d;color:var(--text);font:500 16px/1.55 system-ui,Inter,Segoe UI,Roboto,Arial}
-    /* Topbar */
-    .top{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,rgba(18,18,18,.95),rgba(18,18,18,.75));backdrop-filter:saturate(1.3) blur(8px);border-bottom:1px solid rgba(255,255,255,.06)}
-    .wrap{max-width:1150px;margin:auto;padding:14px 18px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-    .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .logo img{height:34px;width:auto;display:block}
-    .brand{font-weight:900;letter-spacing:.3px;background:linear-gradient(90deg,var(--o1),var(--o2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 24px rgba(255,120,0,.18)}
-    .nav{margin-left:auto;display:flex;gap:12px;flex-wrap:wrap}
-    .nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px;transition:.2s}
-    .nav a:hover,.nav a.active{color:#fff;background:rgba(255,138,0,.1);box-shadow:0 0 0 2px var(--ring) inset}
-    .search{display:flex;align-items:center;gap:8px;background:#121212;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:8px 10px}
-    .search input{all:unset;color:#ddd;font:500 14px/1 system-ui}
-    /* Page */
-    .container{max-width:1150px;margin:26px auto 120px;padding:0 18px}
-    h1{margin:14px 0 8px;font-size:38px;font-weight:900;background:linear-gradient(90deg,var(--o1),var(--o2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 35px rgba(255,122,0,.15)}
-    .meta{color:var(--muted);font-size:14px}
-    /* Accordion */
-    .acc{margin:18px 0;border-radius:var(--r);overflow:hidden;box-shadow:var(--sh)}
-    .acc .item{background:var(--panel);border-bottom:1px solid rgba(255,255,255,.05)}
-    .hdr{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;font-weight:800;letter-spacing:.2px;transition:.2s;user-select:none}
-    .hdr:hover{background:var(--panel2)}
-    .ic{width:26px;height:26px;display:grid;place-items:center;border-radius:8px;color:#fff;background:linear-gradient(180deg,var(--o1),var(--o2));box-shadow:0 5px 18px rgba(255,120,0,.35);margin-left:14px;flex:0 0 26px}
-    .content{display:none;padding:0 18px 18px;background:var(--panel)}
-    .item.open>.content{display:block}
-    .item.open>.hdr{background:var(--panel2);box-shadow:0 0 0 2px var(--ring) inset}
-    /* sub-accordion */
-    .sub{margin:12px 0;border:1px solid rgba(255,255,255,.06);border-radius:12px;overflow:hidden}
-    .sub .hdr{padding:12px 14px;font-weight:700}
-    .sub .content{padding:10px 14px}
-    ul{margin:8px 0 12px 20px}
-    a{color:#ffb266}
-    footer{margin:48px 0 30px;text-align:center;color:var(--muted);font-size:13px}
-    @media (max-width:880px){.nav{order:3;width:100%}.search{order:2;flex:1;max-width:100%}}
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sona City – Regelwerke</title>
+<style>
+  :root{
+    --bg:#121212;--panel:#191919;--card:#232323;--card-line:#2b2b2b;
+    --text:#d9d9d9;--muted:#bdbdbd;--muted2:#9d9d9d;
+    --accent:#ff9a2a;--accent-2:#ff5a12;--chip:#2a2a2a;
+    --shadow:0 10px 30px rgba(0,0,0,.45)
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Inter,Roboto,Arial}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1140px;margin:0 auto;padding:24px}
+
+  /* Topbar */
+  .topbar{position:sticky;top:0;z-index:20;backdrop-filter:saturate(1.2) blur(6px);
+    background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25));border-bottom:1px solid #222}
+  .topbar-inner{display:flex;gap:16px;align-items:center;padding:12px 0;flex-wrap:wrap}
+  .logo{width:46px;height:46px;border-radius:999px;display:grid;place-items:center;
+    background:radial-gradient(120% 120% at 30% 20%, var(--accent) 0%, var(--accent-2) 55%, #222 100%);box-shadow:var(--shadow)}
+  .logo span{font-weight:800;color:#111}
+  .title{font-weight:900;font-size:clamp(22px,2.8vw,34px);
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .sub{color:var(--muted2);font-size:14px;margin-top:-4px}
+
+  /* Tabs */
+  .tabs{display:flex;gap:10px;align-items:center}
+  .tabbtn{
+    appearance:none;border:1px solid #262626;background:#1b1b1b;color:#e6e6e6;
+    padding:10px 14px;border-radius:12px;font:700 14px/1 system-ui;cursor:pointer
+  }
+  .tabbtn.active{background:linear-gradient(90deg,rgba(255,154,42,.12),rgba(255,90,18,.12));border-color:#353535;box-shadow:0 0 0 2px rgba(255,154,42,.25) inset}
+
+  .topbar-spacer{flex:1}
+  .search{display:flex;align-items:center;gap:10px;background:#1b1b1b;border:1px solid #262626;border-radius:12px;padding:10px 12px;min-width:min(44vw,440px)}
+  .search input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font:600 15px/1.3 inherit}
+  .search input::placeholder{color:#888}
+  .kbd{font:600 11px/1 Consolas,ui-monospace,Menlo;background:#151515;border:1px solid #2c2c2c;padding:2px 6px;border-radius:6px;color:#aaa}
+  .jump{background:#1b1b1b;border:1px solid #262626;border-radius:12px;padding:10px 12px;color:var(--text)}
+
+  /* Panels / Accordions */
+  .panel{background:var(--panel);border:1px solid #1f1f1f;border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-top:22px}
+  .tab{display:none} .tab.active{display:block}
+  .acc{border:1px solid var(--card-line);background:var(--card);border-radius:12px;margin:14px 0;overflow:hidden}
+  .acc-h{cursor:pointer;display:flex;align-items:center;gap:12px;padding:16px 18px}
+  .acc-h .tag{font-weight:800;color:var(--accent);min-width:120px}
+  .acc-h .name{font:700 18px/1.25 inherit}
+  .acc-h .plus{margin-left:auto;font:900 22px/1 inherit;color:var(--accent);transition:.2s}
+  .acc.open .plus{transform:rotate(45deg)}
+  .acc-c{display:none;padding:12px 18px 18px;border-top:1px dashed #2e2e2e;color:var(--muted)}
+  .acc.open .acc-c{display:block}
+
+  .subacc{border:1px solid #2a2a2a;background:#1e1e1e;border-radius:10px;margin:10px 0}
+  .subacc-h{cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 14px}
+  .subacc-h .name{font:700 15px/1.25 inherit}
+  .subacc-h .plus{margin-left:auto;color:#bbb;transition:.2s}
+  .subacc.open .subacc-h .plus{transform:rotate(45deg)}
+  .subacc-c{display:none;padding:0 14px 14px;color:#cfcfcf}
+  .subacc.open .subacc-c{display:block}
+
+  ul{margin:.25rem 0 .25rem 1.25rem;padding:0}
+  li{margin:.25rem 0}
+  mark{background:linear-gradient(90deg,#2f2f2f,#3a3a3a);color:#fff;padding:0 .18em;border-radius:.25em}
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+  .chip{background:#2a2a2a;border:1px solid #2a2a2a;color:#cfcfcf;padding:6px 10px;border-radius:999px;font:600 12px/1.1 inherit}
+
+  .footer{color:#adadad;text-align:center;padding:22px 12px}
+  .hidden{display:none!important}
+</style>
 </head>
 <body>
-  <header class="top">
-    <div class="wrap">
-      <a class="logo" href="#top">
-        <img src="assets/logo.png" alt="Sona City Logo">
-        <span class="brand">Sona City</span>
-      </a>
-      <nav class="nav" id="nav">
-        <a href="#allg1">Allgemein I</a>
-        <a href="#allg2">Allgemein II</a>
-        <a href="#ing1">Ingame I</a>
-        <a href="#ing2">Ingame II</a>
-        <a href="#ing3">Ingame III</a>
-        <a href="#safe">Safe/Killzones</a>
-        <a href="#gang1">Gangwar</a>
-        <a href="#frak">Fraktion</a>
-        <a href="#support">Support</a>
-        <a href="#discord">Discord</a>
-        <a href="#verbote">Verbote</a>
-        <a href="#trolling">Trolling</a>
-        <a href="#roxwood">Zwei-Staaten</a>
-        <a href="#sonst">Sonstiges</a>
-        <a href="#airdrops">Airdrops</a>
-        <a href="#blacklist">Blacklist</a>
-      </nav>
-      <label class="search">🔎 <input id="q" placeholder="Suche im Regelwerk …"/></label>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="logo"><span>SC</span></div>
+    <div>
+      <div class="title">Sona City Regelwerke</div>
+      <div class="sub">Version 1.0 — Stand: 07.11.2025</div>
     </div>
-  </header>
 
-  <main class="container" id="top">
-    <h1>Sona City Regelwerk</h1>
-    <div class="meta">Version 1.0 — Stand: <span id="stand"></span></div>
+    <!-- Tabs -->
+    <div class="tabs" id="tabs">
+      <button class="tabbtn active" data-tab="general">Regelwerk</button>
+      <button class="tabbtn" data-tab="faction">Fraktionsregelwerk</button>
+      <button class="tabbtn" data-tab="philosophy">Philosophie</button>
+    </div>
 
-    <!-- §1 ALLGEMEIN I -->
-    <section id="allg1" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§1 Allgemein I <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item">
-              <div class="hdr">§1.1 Zustimmung & Strafen <span class="ic">+</span></div>
-              <div class="content"><p>Mit dem Betritt akzeptierst du das Regelwerk. Das Team kann bei Verstößen angemessene Maßnahmen verhängen; Weisungen sind zu befolgen.</p></div>
-            </div>
-            <div class="item">
-              <div class="hdr">§1.2 Teamanweisungen <span class="ic">+</span></div>
-              <div class="content"><p>Den Anweisungen eines Teammitglieds ist jederzeit Folge zu leisten. Diskussionen bitte sachlich im Support.</p></div>
-            </div>
-            <div class="item">
-              <div class="hdr">§1.3 Account & Cheating <span class="ic">+</span></div>
-              <div class="content"><p>Account-Sharing, Zweitaccounts, Cheats/Modding, Makros, No-Props, Fast-Fire usw. sind verboten. Grauzonen-Suche ist zu unterlassen.</p></div>
-            </div>
-            <div class="item">
-              <div class="hdr">§1.4 Kein Regelbruch gegen Regelbruch <span class="ic">+</span></div>
-              <div class="content"><p>Regelbruch nie mit Gegen-Regelbruch „klären“. Clip sichern → Support.</p></div>
-            </div>
-            <div class="item">
-              <div class="hdr">§1.5 Umgangston & Diskriminierung <span class="ic">+</span></div>
-              <div class="content"><p>Rassismus, Sexismus, schwere Beleidigungen (z. B. „HS“), Beleidigungen Verstorbener u. Ä. sind untersagt und werden hart sanktioniert.</p></div>
-            </div>
-            <div class="item">
-              <div class="hdr">§1.6 OOC-Drohungen <span class="ic">+</span></div>
-              <div class="content"><p>Out-of-Character-Drohungen führen bis zur Klärung zu temporärem oder permanentem Ausschluss.</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <div class="topbar-spacer"></div>
 
-    <!-- §1 ALLGEMEIN II -->
-    <section id="allg2" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§1 Allgemein II <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item">
-              <div class="hdr">§1.7 Heikle Inhalte <span class="ic">+</span></div>
-              <div class="content"><p>Krankheiten, Suizid, sexualisierte Themen werden nicht ausgespielt.</p></div>
-            </div>
-            <div class="item">
-              <div class="hdr">§1.8 Werbung & Eigenwerbung <span class="ic">+</span></div>
-              <div class="content"><p>Werbung/Fremdwerbung ist untersagt. Server-Kommunikation bleibt IC, OOC-Talk vermeiden.</p></div>
+    <!-- Suche (wirkt auf aktiven Tab) -->
+    <label class="search" title="Suchen (Strg /)">
+      🔎 <input id="q" type="search" placeholder="Im aktiven Tab suchen …" autocomplete="off">
+      <span class="kbd">Ctrl</span><span class="kbd">/</span>
+    </label>
+
+    <!-- Schnell-Sprung (füllt sich je Tab) -->
+    <select id="jump" class="jump" title="Zu Kategorie springen">
+      <option value="">Zu Kategorie springen …</option>
+    </select>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- TAB 1: Allgemeines Regelwerk (ohne Fraktion/Gangwar) -->
+  <div id="tab-general" class="tab active">
+    <div class="panel" id="panel-general">
+
+      <!-- §0 GRUNDSÄTZE -->
+      <div class="acc" data-key="§0 Grundsätze">
+        <div class="acc-h"><span class="tag">§0</span><div class="name">Grundsätze</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Allgemeines</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Beim Beitritt akzeptierst du automatisch dieses Regelwerk.</li>
+                <li>Teamanweisungen ist jederzeit Folge zu leisten.</li>
+                <li>Cheats, Mod-Menüs, Faster-Fire, No-Props/Bushes u. ä. sind strengstens verboten.</li>
+                <li>Grauzonen-Ausnutzung ist untersagt.</li>
+                <li><strong>Mindestalter:</strong> <strong>15 Jahre</strong>. <em>Ausnahmen bei erkennbarer Reife möglich.</em></li>
+                <li>Schwere Beleidigungen, Sexismus, Rassismus → harte Sanktionen.</li>
+                <li>Regelbruch nie mit Regelbruch beantworten – Clip → Support.</li>
+              </ul>
+              <div class="chips"><span class="chip">Team</span><span class="chip">Cheats</span><span class="chip">Mindestalter 15*</span></div>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- §2 INGAME I -->
-    <section id="ing1" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§2 Ingame-Regeln I (Schusscalls) <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item"><div class="hdr">§2.1 Grundregeln Schusscall <span class="ic">+</span></div>
-              <div class="content"><ul>
-                <li>Schießen ohne klaren Call = RDM.</li>
-                <li>Beispiele: „Hände hoch, sonst schieße ich.“ / „Aussteigen oder es knallt.“</li>
-                <li>Call gilt 5 Min., erlischt beim Tod der Partei; Zielen ≠ Call.</li>
-                <li>Massencalls („Alle Hände hoch …“) verboten.</li>
-              </ul></div></div>
-            <div class="item"><div class="hdr">§2.2 Formulierungen <span class="ic">+</span></div>
-              <div class="content"><p>Uneindeutige Calls („Hände knallt“, „Hände oder Fortnite“) sind unzulässig.</p></div></div>
-            <div class="item"><div class="hdr">§2.3 Fahrzeugklau & Drive-By <span class="ic">+</span></div>
-              <div class="content"><p>Diebstahl eines Fahrzeugs erzeugt einen Call. Drive-By ist erlaubt (weitere Regeln unten beachten).</p></div></div>
+      <!-- §1 INGAME-REGELN -->
+      <div class="acc" data-key="§1 Ingame Regeln">
+        <div class="acc-h"><span class="tag">§1</span><div class="name">Ingame Regeln</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Kampf & Calls</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Schießen ohne klare Schussankündigung = <strong>RDM</strong>.</li>
+                <li>Ein Call gilt <strong>5 Minuten</strong>. Stirbt man, verfällt er.</li>
+                <li>„Alle Hände hoch“/Massencalls sind verboten. Unklare Calls sind ungültig.</li>
+                <li>Fahrzeugdiebstahl vor den Augen des Besitzers → indirekter Call.</li>
+                <li>Drive-by ist erlaubt; Drittpartei ohne Merkmale nicht.</li>
+                <li><strong>VDM</strong> (bewusstes Überfahren) ist verboten.</li>
+                <li>Bugabuse/Schießen mit erhobenen Händen/Outfit-Wechsel im Kampf → verboten.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Highground & Sound</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Dächer/Container als unfairen Highground besetzen ist untersagt (außer Gangwar-Ausnahmen).</li>
+                <li>Soundboards nur, wenn niemand gestört wird; verbotene Inhalte → Sanktion.</li>
+                <li>Vollmaskierte Personen dürfen nicht über Stimme/Akzent identifiziert werden.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- §2 INTERAKTION & RP -->
+      <div class="acc" data-key="§2 Interaktion & RP">
+        <div class="acc-h"><span class="tag">§2</span><div class="name">Interaktion &amp; RP</div><div class="plus">+</div></div>
+        <div class="acc-c">
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Safezones</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <p>In Safezones darf nicht gecallt, geschossen oder provoziert werden.</p>
+              <ul>
+                <li>Spawn, LSMD/SSMC, Kleidungsläden, Waffenläden, LSC/Benny’s/NB Performance</li>
+                <li>DoJ, Taxi, Anwälte, Clubs, Abschlepp, Bekleidung/Friseur, legale Farmen, LifeInvader, Rennbahn, Restaurants (nicht Crime-geführt)</li>
+                <li>Abcampen & Call rein/raus aus Safezones sind ungültig und werden als RDM gewertet.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Sperrzonen / Todeszonen</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>LSPD/LSSD/SG/FIB (Innenbereiche, Garage, Dach), Militärgelände, Anwesen/Hoods/Chapter, Schwarzmärkte.</li>
+                <li>Routenbesitzer dürfen Sammler/Verarbeiter/Käufer als indirekte Sperrzone schützen.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Lebensschutz & Fear-RP</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Waffe am Kopf → keine Waffe ziehen; Leben schützen.</li>
+                <li>Schwere Demütigung kann Fear-RP aussetzen (z. B. Vergewaltigungs-RP ist verboten).</li>
+                <li>Unrealistisches Ausweichen von Schüssen ist zu vermeiden.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Fahr- & Zivilistenregeln</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Extrem beschädigte Fahrzeuge nicht weiterfahren; Motorrad/Fahrrad: Platten = stoppen.</li>
+                <li>Zivilisten dürfen max. zu 6 agieren, mit einheitlicher Kleidung oder 2 klaren Merkmalen.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- §4 SUPPORT -->
+      <div class="acc" data-key="§4 Support">
+        <div class="acc-h"><span class="tag">§4</span><div class="name">Support</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Ablauf & Beweise</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Videobeweis mit vollständiger Situation & Ton beider Parteien.</li>
+                <li>Supportfälle innerhalb von 48 h melden.</li>
+                <li>Erst ausspielen, dann in den Support – kein IC-Rache-RP.</li>
+                <li>Leitender Supporter entscheidet; Widerspruch über Tickets möglich.</li>
+                <li>Teammitglieder im Aduty werden ignoriert (außer sie sprechen dich an).</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- §2 INGAME II -->
-    <section id="ing2" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§2 Ingame-Regeln II (Drittpartei, Gefechte) <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item"><div class="hdr">§2.4 Drittpartei <span class="ic">+</span></div>
-              <div class="content"><p>Keine Drittpartei; min. 3 Erkennungsmerkmale, um als Gruppe zu gelten.</p></div></div>
-            <div class="item"><div class="hdr">§2.5 Verhalten im Gefecht <span class="ic">+</span></div>
-              <div class="content"><p>Unnötiges Schlagen im Gefecht & Bug-Abuse (Schuss mit erhobenen Händen, Kleider-Exploit usw.) verboten.</p></div></div>
-            <div class="item"><div class="hdr">§2.6 Tabubereiche <span class="ic">+</span></div>
-              <div class="content"><p>Unter der MD-Brücke (Richtung Würfelpark) ist Beschuss, auch mit Call, untersagt.</p></div></div>
+      <!-- §5 VERBOTE -->
+      <div class="acc" data-key="§5 Verbote">
+        <div class="acc-h"><span class="tag">§5</span><div class="name">Allgemeine Verbote</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">RDM / VDM / Fail-RP</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li><strong>RDM</strong>: Töten/Beschießen ohne RP-Hintergrund/Call.</li>
+                <li><strong>VDM</strong>: Sinnloses Anfahren/Überfahren.</li>
+                <li><strong>Fail-RP</strong>: Unrealistisches Handeln (z. B. Hochhaus-Sprünge, Emote-Missbrauch im Kampf, Sprechen als Bewusstloser, etc.).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Meta / Power / Combat Logging</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li><strong>Meta-Gaming</strong>: OOC-Infos IC nutzen (inkl. Streams/Chats/Voice außerhalb).</li>
+                <li><strong>Power-RP</strong>: Situationen aufzwingen (z. B. ATM-Auszahlungen erzwingen).</li>
+                <li><strong>Combat Logging / RP-Flucht</strong>: Ausloggen/Ausbluten um RP zu verlassen.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">New-Life / Backseat / Ninja</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li><strong>New-Life</strong>: Im Krankenhaus aufgewacht → an letzte Situation nicht teilnehmen; 15 Min keine illegalen Aktionen nach Reanimation.</li>
+                <li><strong>Backseat-Gaming</strong>: Anweisungen von Außenstehenden befolgen → verboten.</li>
+                <li><strong>Ninja-RP</strong>: Ohne Bezug in Situationen reinplatzen → verboten.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- §2 INGAME III -->
-    <section id="ing3" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§2 Ingame-Regeln III (Highground, Skins, Audio) <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item"><div class="hdr">§2.7 Highgrounds <span class="ic">+</span></div>
-              <div class="content"><p>Dächer/Container u. ä. als unfairer Highground sind tabu (Gangwars ausgenommen).</p></div></div>
-            <div class="item"><div class="hdr">§2.8 Soundboards <span class="ic">+</span></div>
-              <div class="content"><p>Nur wenn niemand gestört wird; Inhalte gem. §1 untersagt.</p></div></div>
-            <div class="item"><div class="hdr">§2.9 Skins & Aduty <span class="ic">+</span></div>
-              <div class="content"><p>Frauenskins nur für Frauen; Aduty-Outfits nur fürs Team; „Caillou“/durchsichtige Körperteile = Trolling.</p></div></div>
+      <!-- §6 TROLLING / BAITING -->
+      <div class="acc" data-key="§6 Trolling & Baiting">
+        <div class="acc-h"><span class="tag">§6</span><div class="name">Trolling &amp; Baiting</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Verhalten</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Gezieltes Stören von RP, Cop-Baiting, Dauer-Hupen, Donuts vor Fraktionsgebieten → verboten.</li>
+                <li>Als Fraktionsmitglied ausgeben → verboten.</li>
+                <li>Unpassende Kosmetik (neon, übertrieben, etc.) → verboten; Server-Style wahren.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SAFE / KILL -->
-    <section id="safe" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§3 Safezones / §4 Killzone <span class="ic">+</span></div>
-        <div class="content">
-          <p>Safezones: kein Call, kein Beschuss, kein Provozieren; Abcampen verboten; Calls aus/into Safezones ungültig.</p>
-          <div class="sub">
-            <div class="item"><div class="hdr">Beispiele Safezones <span class="ic">+</span></div>
-              <div class="content"><ul><li>Spawn, MDs, Kleidung/Waffen, Meetingpoints u. a.</li></ul></div></div>
-            <div class="item"><div class="hdr">Killzone <span class="ic">+</span></div>
-              <div class="content"><ul><li>In Killzonen kein Call nötig; Spawn-/Zonen-Abcampen verboten; Eigen-/Gegenbeschuss erst ab Eintritt der roten Zone.</li></ul></div></div>
+      <!-- §7 ZWEI-STAATEN-KONZEPT (ROXWOOD) -->
+      <div class="acc" data-key="§7 Zwei-Staaten-Konzept">
+        <div class="acc-h"><span class="tag">§7</span><div class="name">Zwei-Staaten-Konzept (Roxwood)</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Grundlagen & Aufenthalt</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Los Santos und Roxwood sind getrennte Staaten; Handlungshoheit nur mit Begründung/Absprache.</li>
+                <li>Aufenthalt Roxwood: Visum/Arbeitsvisum/Staatsbürgerschaft; illegale Einreise → Abschiebung + Bußgeld.</li>
+                <li>Sicherheitsausrüstungspflicht bei Arbeiten (z. B. Mine); Verstöße → Bußgeld.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Grenzen & Gerichtsbarkeit</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Grenzübertritte nur mit triftiger RP-Begründung; Verfolgung grenzüberschreitend dokumentieren.</li>
+                <li>Taten in Roxwood → DDJ Roxwood zuständig; in LS → DOJ LS.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Ranger & Korruption (RP)</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Paramilitärische Strukturen/Ranger dürfen Grenzschutz durchführen (RP-Begründung).</li>
+                <li>Interne Korruptions-RP möglich, solange kein OOC-Vorteil/Eigenbereicherung.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Alcatraz & Paleto-Pufferzone</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Alcatraz als Hochsicherheitsinsel (RP-Bannersatz als Spielzeitstrafe, 1 Tag = 6 Std. Ingame).</li>
+                <li>Paleto Bank in militärischer Pufferzone; „wer zuerst kontrolliert, hat operative Hoheit“.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- GANGWAR -->
-    <section id="gang1" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§5 Gangwar <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item"><div class="hdr">§5.1 – §5.4 Grundsätze <span class="ic">+</span></div>
-              <div class="content"><ul>
-                <li>Gekämpft wird nur <b>in</b> der Zone; rein/raus schießen verboten.</li>
-                <li>Zone verlassen nach Eintritt → Gegenbeschuss außerhalb möglich.</li>
-                <li>Kleider-Exploit (unkenntlich) verboten → direkte Sanktion möglich.</li>
-              </ul></div></div>
-            <div class="item"><div class="hdr">§5.5 – §5.10 Organisation <span class="ic">+</span></div>
-              <div class="content"><ul>
-                <li>Teilnahme-Mindestzahlen & Absprache im Frakleader-Chat vorab.</li>
-                <li>Kein „Nicht-mehr-Anfahren“ in den Schlussminuten.</li>
-                <li>Trashtalk im GW unterlassen; Teamler entscheidet über Sanktion.</li>
-              </ul></div></div>
+      <!-- §8 VERKEHR / ORDNUNG ROXWOOD -->
+      <div class="acc" data-key="§8 Verkehr Roxwood">
+        <div class="acc-h"><span class="tag">§8</span><div class="name">Roxwood – Ordnung &amp; Verkehr</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Verkehrsverstöße</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Rücksichtsloses Fahren, falsche Seite, illegale Rennen, Anti-Lag-Belästigung → Bußgelder/Haft.</li>
+                <li>Parkverbote (Marina Beach Steg, Gehwege, etc.) → Bußgelder.</li>
+                <li>Bei Ranger-Konvois: sofort rechts ran.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- FRAKTION -->
-    <section id="frak" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§6 Fraktion & Zivilisten <span class="ic">+</span></div>
-        <div class="content">
+      <!-- §9 RAUB & GEISELN -->
+      <div class="acc" data-key="§9 Raub & Geiselnahmen">
+        <div class="acc-h"><span class="tag">§9</span><div class="name">Raub, Geiselnahme &amp; Wirtschaft</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Raub</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Raub realistisch – keine Übertreibung der Beute ohne RP-Bezug.</li>
+                <li>Illegale Routen: Raub nur am Sammler/Verarbeiter/Käufer, nicht „auf dem Weg“ ohne RP.</li>
+                <li>Items, die nur aus Cases stammen, dürfen abgenommen werden; Uhren/Taschen/Brillen nicht.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Geiselnahmen</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>RP steht im Vordergrund, nicht die Auszahlung.</li>
+                <li>Verhandlungen persönlich; keine Dritten oder Funk.</li>
+                <li>Maximales Lösegeld pro Geisel: $7.500.</li>
+                <li>Geisel nur mit glaubhaftem Setup (an Ort gelockt etc.).</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- §10 AIRDROPS -->
+      <div class="acc" data-key="§10 Airdrops">
+        <div class="acc-h"><span class="tag">§10</span><div class="name">Airdrops</div><div class="plus">+</div></div>
+        <div class="acc-c">
           <ul>
-            <li>Fraktionslimit/-warns gem. interner Vorgaben; Warns verfallen nach 1 Woche.</li>
-            <li>Dauercalls nur nach Absprache; Spawntrappen bleibt verboten.</li>
-            <li>Zivilisten max. 5 zusammen; klare Merkmale/Outfits nötig.</li>
-            <li>Betreten von Fraktionsanwesen gilt als Bedrohung → Call.</li>
+            <li>Nur auf Festland; Orte müssen per Straße/Feldweg erreichbar sein.</li>
+            <li>Werfende Partei: beim Wurf nicht im Fahrzeug, Verteidigung zu Fuß; nach Öffnung Fahrzeuge wieder erlaubt.</li>
+            <li>Angreifer dürfen anfahren, müssen aber zu Fuß am Drop kämpfen.</li>
           </ul>
         </div>
       </div>
-    </section>
 
-    <!-- SUPPORT -->
-    <section id="support" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§7 Support <span class="ic">+</span></div>
-        <div class="content">
+      <!-- §11 BLACKLISTED WÖRTER -->
+      <div class="acc" data-key="§11 Blacklisted Wörter">
+        <div class="acc-h"><span class="tag">§11</span><div class="name">Blacklisted Wörter</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <p>Beispiele (nicht abschließend):</p>
           <ul>
-            <li>Clip max. 24 h alt, vollständige Situation mit Ton; sonst keine Maßnahme.</li>
-            <li>Gegenclip kann Strafe aufheben. Respektvoller Umgang; Eigensupport erlaubt.</li>
-            <li>Aduty wird ignoriert, außer man wird angesprochen. Stören von Supportfällen verboten.</li>
-            <li>Androhen von Banns/Warns nur Team.</li>
+            <li>„Regelwerk/Bibel“ in OOC-Anspielung, „X-Muskel/Taste“, „Dashcam/Livestream/Eule“ o. ä.</li>
+            <li>Schwere Beleidigungen (Familie), sexistische/rassistische Slurs.</li>
+            <li>„Götter/PowerRanger/Oben/Suppe…“ als Support-Anspielung.</li>
           </ul>
         </div>
       </div>
-    </section>
 
-    <!-- DISCORD -->
-    <section id="discord" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§8 Discord <span class="ic">+</span></div>
-        <div class="content">
-          <ul>
-            <li>Discord-Guidelines beachten; private Infos nicht teilen; Spam → Mute.</li>
-            <li>Einladungslinks/Fremdwerbung → Permaban.</li>
-            <li>Freundlicher Umgang; Projektleitung/Team nicht pingen (außer Tickets).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- VERBOTE -->
-    <section id="verbote" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">§9 Allgemeine Verbote <span class="ic">+</span></div>
-        <div class="content">
-          <ul>
-            <li><b>RDM/VDM</b>, Fail-RP (unrealistische Handlungen), Combat-Logging, Ninja-RP.</li>
-            <li><b>Meta-Gaming</b> (Infos außerhalb nutzen), <b>Power-RP</b> (RP aufzwingen).</li>
-            <li><b>New-Life-Regel</b>: Krankenhaus = Erinnerung weg; nach Reanimation 15 Min. keine illegalen Aktionen.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <!-- TAB 2: Fraktionsregelwerk (alles aus Fraktion & Gangwar) -->
+  <div id="tab-faction" class="tab">
+    <div class="panel" id="panel-faction">
 
-    <!-- TROLLING -->
-    <section id="trolling" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">Trolling & Baiting <span class="ic">+</span></div>
-        <div class="content">
-          <ul>
-            <li>Provozieren ohne RP-Grund (Cop-Baiting, Dauerhupen, Waffen ziehen/einpacken etc.) verboten.</li>
-            <li>Falsche Zugehörigkeit ausgeben, unpassende Kosmetik (Neon, Gesichtsbemalung, extreme Farben) untersagt.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- ZWEI-STAATEN-KONZEPT -->
-    <section id="roxwood" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">Zwei-Staaten-Konzept (Roxwood) <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item"><div class="hdr">Geltung & Trennung <span class="ic">+</span></div>
-              <div class="content"><p>Los Santos & Roxwood sind getrennte Staaten mit eigenen Institutionen/Zuständigkeiten. Übergriffe nur mit triftigem RP-Grund/Absprache.</p></div></div>
-            <div class="item"><div class="hdr">Aufenthaltsrecht & Grenzen <span class="ic">+</span></div>
-              <div class="content"><p>Visum/Arbeitsvisum/Staatsbürgerschaft für Roxwood nötig; illegale Einreise → Abschiebung + Bußgeld. Grenz-/Pufferzonen nach „wer zuerst bespielt, hat operative Hoheit“.</p></div></div>
-            <div class="item"><div class="hdr">Justiz & Sonderregeln <span class="ic">+</span></div>
-              <div class="content"><p>DDJ Roxwood zuständig für Taten in Roxwood; härteres Strafmaß möglich. Paramiltärische Strukturen & Kontrollen zulässig, wenn RP-begründet. Alcatraz als Hochsicherheitsinsel mit eigenem Regelset.</p></div></div>
+      <!-- §F0 GRUNDSÄTZE (Fraktion) -->
+      <div class="acc" data-key="§F0 Grundsätze Fraktion">
+        <div class="acc-h"><span class="tag">§F0</span><div class="name">Grundsätze (Fraktion)</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Selbstverständnis & Struktur</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Klare Befehlskette (Leader → High Command → Member). Interne Weisungen sind bindend.</li>
+                <li>OOC-Konflikte werden <em>nicht</em> ins RP getragen; respektvolle Kommunikation ist Pflicht.</li>
+                <li>Mindestalter: <strong>15</strong> (Ausnahmen bei erkennbarer Reife möglich).</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- SONSTIGES -->
-    <section id="sonst" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">Sonstiges (Raub, Geiselnahme, Verkehr, RP-Qualität) <span class="ic">+</span></div>
-        <div class="content">
-          <div class="sub">
-            <div class="item"><div class="hdr">Raubüberfälle & Geiseln <span class="ic">+</span></div>
-              <div class="content"><ul>
-                <li>Fokus auf RP, nicht auf reinen Profit. Geisel-Verhandlungen persönlich; max. Lösegeld pro Geisel 7.500 $.</li>
-                <li>Illegale Routen: Raub nur direkt an Sammler/Verarbeiter/Käufer.</li>
-              </ul></div></div>
-            <div class="item"><div class="hdr">Verhalten & Verkehr <span class="ic">+</span></div>
-              <div class="content"><ul>
-                <li>Realistisches Fahrverhalten, Rücksicht an Hotspots; nach Crash RP anbieten.</li>
-                <li>Innenräume: nicht rennen ohne RP-Grund.</li>
-              </ul></div></div>
-            <div class="item"><div class="hdr">Fear-RP & Unantastbare <span class="ic">+</span></div>
-              <div class="content"><ul>
-                <li>Waffenbedrohung ernst nehmen; Demütigungen nur in Grenzen. Medics/Mechaniker/Taxi etc. unantastbar (sofern nicht Aggressor).</li>
-              </ul></div></div>
+      <!-- §F1 FRAKTIONEN -->
+      <div class="acc" data-key="§F1 Fraktionen">
+        <div class="acc-h"><span class="tag">§F1</span><div class="name">Fraktionen</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Mitglieder & Organisation</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Fraktionslimit: <strong>50 Mitglieder</strong> (Überhang schnellstmöglich abbauen).</li>
+                <li>Zivilisten (ohne Fraktion) dürfen nur bis <strong>5 Personen</strong> gemeinsam agieren.</li>
+                <li>Fraktionswarns verfallen nach <strong>1 Woche</strong>.</li>
+                <li>Dauercalls nur nach <strong>dokumentierter Absprache</strong> zwischen Leaders (Frakleader-Chat).</li>
+                <li>Betreten fremder Fraktionsanwesen gilt als <strong>Bedrohung</strong> → indirekter Schusscall.</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- AIRDROPS -->
-    <section id="airdrops" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">Airdrops <span class="ic">+</span></div>
-        <div class="content">
+      <!-- §F2 GANGWAR -->
+      <div class="acc" data-key="§F2 Gangwar">
+        <div class="acc-h"><span class="tag">§F2</span><div class="name">Gangwar</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Ablauf & Teilnahme</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Zone muss aktiv <strong>angefahren/verteidigt</strong> werden.</li>
+                <li>Kämpfe finden <strong>nur in der Zone</strong> statt (kein Rein-/Rauschießen).</li>
+                <li>Wer die rote Zone <strong>betritt</strong>, verlässt sie nicht mehr; sonst ist Gegenbeschuss zulässig.</li>
+                <li>Kleidung darf nicht neutralisiert werden (eindeutige Erkennung bleibt gewährleistet).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Startbedingungen & Fairplay</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li><strong>Start:</strong> Angreifer mind. 15, Verteidiger mind. 15 online (Serverstandard anpassbar).</li>
+                <li>Absprache <strong>vorab</strong> im Frakleader-Chat ist Pflicht (Zeitfenster/Teilnehmerzahl).</li>
+                <li>Campen/Baiten kurz vor der Zone ist untersagt – Zone <strong>unverzüglich</strong> betreten.</li>
+                <li>Trashtalk/Beleidigungen vermeiden; Sanktionen nach Ermessen des Teamlers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- §F3 DIPLOMATIE & TERRITORIUM -->
+      <div class="acc" data-key="§F3 Diplomatie & Territorium">
+        <div class="acc-h"><span class="tag">§F3</span><div class="name">Diplomatie &amp; Territorium</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Absprachen</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Kooperationen, Konflikte und Kriege werden <strong>intern dokumentiert</strong>.</li>
+                <li>Dauercalls nur mit <strong>dokumentierter</strong> beidseitiger Zustimmung (kein Spawntrappen).</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Anwesen & Hoods</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Fremde Anwesen/Hoods/Chapter sind zu respektieren; unbefugtes Betreten kann Call auslösen.</li>
+                <li>Kein Abcampen an Safezones oder Grenzlinien zur Vorteilserlangung.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- §F4 FUNK & EINSÄTZE -->
+      <div class="acc" data-key="§F4 Funk & Einsätze">
+        <div class="acc-h"><span class="tag">§F4</span><div class="name">Funk, Calls &amp; Einsatzablauf</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Funkdisziplin</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Kurze, klare Ansagen – keine Doppel-Leads; der Einsatz-Lead hat das letzte Wort.</li>
+                <li>Rückfragen nur, wenn sicherheitsrelevant; sonst nach Einsatz debriefen.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Schusscall-Standard</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li><strong>Direkt:</strong> Drohung + gezogene Waffe, klar hörbar, Reaktionszeit 3–5s.</li>
+                <li><strong>Indirekt:</strong> z. B. Fahrzeugdiebstahl vor Augen, extremes Provozieren, 3s Ziel-Fixierung.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- §F5 INTERNE SANKTIONEN -->
+      <div class="acc" data-key="§F5 Interne Sanktionen">
+        <div class="acc-h"><span class="tag">§F5</span><div class="name">Interne Sanktionen</div><div class="plus">+</div></div>
+        <div class="acc-c">
           <ul>
-            <li>Nur Festland; Orte müssen per Straße/Feldweg erreichbar sein.</li>
-            <li>Werfende Partei: beim Wurf nicht im Fahrzeug; Verteidigung zu Fuß.</li>
-            <li>Angreifer: anfahren erlaubt, Angriff zu Fuß; Fahrzeuge erst nach Ende der Kämpfe wieder besetzen.</li>
+            <li>Stufen: Verwarnung → Aufgaben/Training → Downrank → Kick → Blacklist.</li>
+            <li>Schwerwiegendes (Cheats, OOC-Beleidigungen, Leaks, Support-Umgehung) → sofortige Maßnahmen.</li>
           </ul>
         </div>
       </div>
-    </section>
 
-    <!-- BLACKLIST -->
-    <section id="blacklist" class="acc" data-section>
-      <div class="item">
-        <div class="hdr">Blacklisted Wörter (OOC/beleidigend/rassistisch) <span class="ic">+</span></div>
-        <div class="content">
-          <p>Begriffe wie „Frak/Fraktion“ OOC-kontext, Gaming-Begriffe („Aim/One-Shot/GG“) im RP, „Regelwerk/Bibel“ als OOC-Hinweis, „X-Muskel/Taste“, Stream/Dashcam-Bezüge, Familien-Beleidigungen, harte/sexistische/rassistische Ausdrücke u. v. m. sind verboten.</p>
+    </div>
+  </div>
+
+  <!-- TAB 3: Philosophie (inkl. Wirtschaft & Umgang) -->
+  <div id="tab-philosophy" class="tab">
+    <div class="panel" id="panel-philosophy">
+
+      <div class="acc" data-key="Φ0 Vision">
+        <div class="acc-h"><span class="tag">Φ0</span><div class="name">Vision</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <p>Sona City steht für glaubwürdiges, faires und spannendes RP. Die Wirtschaft ist Teil der Story: Entscheidungen haben Folgen auf Preise, Angebot und Machtbalance.</p>
+          <ul>
+            <li>Story über Stats – Qualität vor Quantität.</li>
+            <li>Konflikte erzeugen neues RP statt OOC-Stress.</li>
+          </ul>
         </div>
       </div>
-    </section>
 
-    <footer>© <span id="year"></span> Sona City — Regelwerk • Alle Rechte vorbehalten.</footer>
-  </main>
+      <!-- Wirtschaft & Progression -->
+      <div class="acc" data-key="Φ1 Wirtschaft & Progression">
+        <div class="acc-h"><span class="tag">Φ1</span><div class="name">Wirtschaft &amp; Progression</div><div class="plus">+</div></div>
+        <div class="acc-c">
 
-  <script>
-    // Datum
-    const d=new Date();
-    document.getElementById('stand').textContent =
-      d.toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});
-    document.getElementById('year').textContent = d.getFullYear();
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Grundprinzipien</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Die Wirtschaft reagiert auf Spieleraktionen: Nachfrage, Knappheit und Risiko beeinflussen Preise.</li>
+                <li>Geld ist Mittel zum RP, nicht Selbstzweck. Fortschritt entsteht durch Kontakte, Ideen und Einsatz.</li>
+                <li>Abkürzungen ohne RP (reines Grinden, Absprachen zum Farm-Bypassen) sind unerwünscht.</li>
+              </ul>
+            </div>
+          </div>
 
-    // Accordion (auch für Sub)
-    document.addEventListener('click', (e)=>{
-      const h=e.target.closest('.hdr'); if(!h) return;
-      const item=h.parentElement; if(!item.classList.contains('item')) return;
-      item.classList.toggle('open');
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Handel & Markt</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Handel IC, nachvollziehbar und fair. Monopol-/Preisabsprachen nur mit RP-Folgen (Risiko, Gegenwehr).</li>
+                <li>Seltene Güter → höhere Verantwortung: kein Dumping zur Zerstörung von RP-Linien.</li>
+                <li>Service-Jobs (Medics, Mechaniker, Taxi, Gastro) sind wirtschaftliche Motoren und bekommen Raum.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Risiko & Belohnung</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Je riskanter der Weg, desto lohnender – aber immer mit glaubhaftem RP-Risiko.</li>
+                <li>Logistik zählt: Routen, Schutz, Abnehmer – wer organisiert, verdient.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Umgang & Community -->
+      <div class="acc" data-key="Φ2 Umgang & Community">
+        <div class="acc-h"><span class="tag">Φ2</span><div class="name">Umgang &amp; Community-Kultur</div><div class="plus">+</div></div>
+        <div class="acc-c">
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Respekt im RP</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Immer IC bleiben. OOC nur, wenn nötig und kurz & sachlich.</li>
+                <li>„No-Win-RP“ vermeiden: dem Gegenüber Optionen lassen (Flucht, Verhandlung, Wiedergutmachung).</li>
+                <li>Nach harten Szenen: kurzer OOC-Check (im Discord), um Missverständnisse zu klären.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Konflikte & Eskalation</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Eskalationsstufen: Andeutung → Drohung → Konsequenz. Gewalt ist das letzte Mittel.</li>
+                <li>Langfristige Fehden brauchen Pausen & Wendepunkte, damit neue Stränge entstehen.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Neulinge & Inklusion</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Neuen Spieler:innen aktiv Hooks anbieten (Jobs, kleine Quests, Mentoring).</li>
+                <li>Fehler im RP zuerst im RP lösen (Leitplanken setzen, nicht bloß bestrafen).</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RP-Grundsätze -->
+      <div class="acc" data-key="Φ3 RP-Grundsätze">
+        <div class="acc-h"><span class="tag">Φ3</span><div class="name">RP-Grundsätze</div><div class="plus">+</div></div>
+        <div class="acc-c">
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Spielerlebnis</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>„Ja, und…“ statt „Nein“ – baue auf Angeboten auf, statt sie zu blocken.</li>
+                <li>Events/Fraktions-Arcs dienen der Stadt – nicht nur der eigenen Gruppe.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="subacc">
+            <div class="subacc-h"><div class="name">Konsequenz & Logik</div><div class="plus">+</div></div>
+            <div class="subacc-c">
+              <ul>
+                <li>Taten haben Folgen (wirtschaftlich, sozial, rechtlich). Konsequenzen sind Spielinhalt, kein Frust.</li>
+                <li>Unrealistische Auswege vermeiden; nutze legale/illegale Strukturen mit Sinn.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">© 2025 Sona City — Regelwerke · Alle Rechte vorbehalten.</div>
+</div>
+
+<script>
+/* Helpers */
+const $$ = s=>Array.from(document.querySelectorAll(s));
+
+/* Tabs switching */
+const tabs = $$('#tabs .tabbtn');
+const tabViews = {
+  general: document.getElementById('tab-general'),
+  faction: document.getElementById('tab-faction'),
+  philosophy: document.getElementById('tab-philosophy'),
+};
+const panels = {
+  general: document.getElementById('panel-general'),
+  faction: document.getElementById('panel-faction'),
+  philosophy: document.getElementById('panel-philosophy'),
+};
+let activeTab = 'general';
+
+tabs.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    if(btn.classList.contains('active')) return;
+    tabs.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    activeTab = btn.dataset.tab;
+    for(const [k,v] of Object.entries(tabViews)){ v.classList.toggle('active', k===activeTab); }
+    buildJump(); // refresh jump list for this tab
+    document.getElementById('q').value=''; // clear search
+    clearSearchState();
+  });
+});
+
+/* Accordion toggles (all tabs) */
+document.body.addEventListener('click', e=>{
+  const h = e.target.closest('.acc-h, .subacc-h'); if(!h) return;
+  h.parentElement.classList.toggle('open');
+});
+
+/* Jump list per active tab */
+const jump = document.getElementById('jump');
+function buildJump(){
+  jump.innerHTML = '<option value="">Zu Kategorie springen …</option>';
+  const root = panels[activeTab];
+  const topAcc = Array.from(root.querySelectorAll('.acc'));
+  topAcc.forEach((a,i)=>{
+    const tag=a.querySelector('.tag')?.textContent.trim()||'';
+    const name=a.querySelector('.name')?.textContent.trim()||'';
+    const opt=document.createElement('option'); opt.value=i; opt.textContent=`${tag} ${name}`;
+    jump.appendChild(opt);
+  });
+}
+buildJump();
+jump.addEventListener('change',e=>{
+  if(!e.target.value) return;
+  const idx=+e.target.value;
+  const root = panels[activeTab];
+  const target = root.querySelectorAll('.acc')[idx];
+  if(target){ target.classList.add('open'); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+  jump.value='';
+});
+
+/* Search works only in active tab */
+const q=document.getElementById('q'); let to=null;
+window.addEventListener('keydown',ev=>{
+  if((ev.ctrlKey||ev.metaKey)&&ev.key==='/'){ev.preventDefault();q.focus();q.select();}
+});
+q.addEventListener('input',()=>{clearTimeout(to);to=setTimeout(runSearch,90);});
+
+function clearMarks(node){node.querySelectorAll('mark').forEach(m=>m.replaceWith(document.createTextNode(m.textContent)));}
+function escRe(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+function highlight(el, query){
+  const re=new RegExp('('+escRe(query)+')','gi');
+  for(const n of el.childNodes){
+    if(n.nodeType===3){
+      const parts=n.textContent.split(re);
+      if(parts.length>1){
+        const frag=document.createDocumentFragment();
+        parts.forEach((p,i)=>{
+          if(i%2===1){const m=document.createElement('mark');m.textContent=p;frag.appendChild(m);}
+          else frag.appendChild(document.createTextNode(p));
+        }); n.replaceWith(frag);
+      }
+    }else if(n.nodeType===1){highlight(n, query);}
+  }
+}
+function clearSearchState(){
+  const root=panels[activeTab];
+  root.querySelectorAll('.acc,.subacc').forEach(x=>{x.classList.remove('hidden','open'); clearMarks(x);});
+}
+function runSearch(){
+  const term=q.value.trim().toLowerCase();
+  const root=panels[activeTab];
+  root.querySelectorAll('.acc,.subacc').forEach(x=>{x.classList.remove('hidden','open'); clearMarks(x);});
+  if(!term) return;
+  const accs = Array.from(root.querySelectorAll('.acc'));
+  accs.forEach(acc=>{
+    const txt=acc.textContent.toLowerCase();
+    if(!txt.includes(term)){ acc.classList.add('hidden'); return; }
+    acc.classList.add('open');
+    acc.querySelectorAll('.subacc').forEach(sub=>{
+      const ok=sub.textContent.toLowerCase().includes(term);
+      sub.classList.toggle('hidden',!ok);
+      sub.classList.toggle('open',ok);
     });
-
-    // Smooth scroll + Scroll-Spy
-    const links=[...document.querySelectorAll('.nav a')];
-    links.forEach(a=>a.addEventListener('click',e=>{
-      e.preventDefault(); const id=a.getAttribute('href'); const el=document.querySelector(id);
-      if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-    }));
-    const secs=[...document.querySelectorAll('[data-section]')];
-    const spy=new IntersectionObserver(ents=>{
-      ents.forEach(ent=>{
-        if(ent.isIntersecting){
-          links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+ent.target.id));
-        }
-      })
-    },{threshold:.2, rootMargin:'-80px 0px -60% 0px'});
-    secs.forEach(s=>spy.observe(s));
-
-    // Suche
-    const q=document.getElementById('q');
-    q.addEventListener('input', ()=>{
-      const t=q.value.trim().toLowerCase();
-      document.querySelectorAll('.acc').forEach(acc=>{
-        let any=false;
-        acc.querySelectorAll('.item').forEach(it=>{
-          const hit=it.textContent.toLowerCase().includes(t);
-          it.style.display=hit?'':'none'; any=any||hit;
-        });
-        acc.style.display=any?'':'none';
-      });
-    });
-  </script>
+    highlight(acc, term);
+  });
+}
+</script>
 </body>
 </html>
