@@ -23,8 +23,9 @@
     background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25));border-bottom:1px solid #222}
   .topbar-inner{display:flex;gap:16px;align-items:center;padding:12px 0;flex-wrap:wrap}
   .brand{display:flex;align-items:center;gap:12px}
-  .logo{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;
-    background:radial-gradient(120% 120% at 30% 20%, var(--accent) 0%, var(--accent-2) 55%, #222 100%);box-shadow:var(--shadow);font-weight:900;color:#111}
+  .logo{
+    width:40px;height:40px;border-radius:8px;object-fit:contain;display:block;background:transparent;box-shadow:var(--shadow);
+  }
   .title{font-weight:900;font-size:clamp(20px,2.6vw,28px);
     background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .nav{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
@@ -42,9 +43,8 @@
   /* Hero */
   .hero{padding:48px 0}
   .hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:26px;align-items:center}
-  .claim{font-weight:900;font-size:clamp(28px,4.2vw,44px);line-height:1.1;
-    letter-spacing:.2px;background:linear-gradient(90deg,var(--accent),var(--accent-2));
-    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 8px}
+  .claim{font-weight:900;font-size:clamp(28px,4.2vw,44px);line-height:1.1;letter-spacing:.2px;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin:0 0 8px}
   .lead{color:var(--muted);font-size:clamp(15px,1.6vw,18px);margin:0 0 18px}
   .cta{display:flex;gap:12px;flex-wrap:wrap}
   .cta .btn{padding:12px 16px;border-radius:14px}
@@ -68,8 +68,7 @@
     background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .section-sub{color:var(--muted2);margin:0 0 10px}
 
-  /* Tabs / Regelwerk Panels */
-  .wrap.narrow{max-width:1140px}
+  /* Tabs / Panels */
   .panel{background:var(--panel);border:1px solid #1f1f1f;border-radius:20px;box-shadow:var(--shadow);padding:18px;margin-top:22px}
   .tab{display:none} .tab.active{display:block}
 
@@ -127,7 +126,7 @@
 <div class="topbar">
   <div class="wrap topbar-inner">
     <div class="brand">
-      <div class="logo">SC</div>
+      <img class="logo" src="logo.png" alt="Sona City Logo">
       <div class="title">Sona City</div>
     </div>
     <nav class="nav">
@@ -212,9 +211,9 @@
                 <ul>
                   <li>Beim Beitritt akzeptierst du automatisch dieses Regelwerk.</li>
                   <li>Teamanweisungen ist jederzeit Folge zu leisten.</li>
-                  <li>Cheats, Mod-Menüs, Faster-Fire, No-Props/Bushes u. ä. sind strengstens verboten.</li>
+                  <li>Cheats/Mod-Menüs/Faster-Fire/No-Props/Bushes u. ä. sind strikt verboten.</li>
                   <li>Grauzonen-Ausnutzung ist untersagt.</li>
-                  <li><strong>Mindestalter:</strong> <strong>15 Jahre</strong>. <em>Ausnahmen bei erkennbarer Reife möglich.</em></li>
+                  <li><strong>Mindestalter: 15 Jahre</strong> (Ausnahmen bei erkennbarer Reife möglich).</li>
                   <li>Schwere Beleidigungen, Sexismus, Rassismus → harte Sanktionen.</li>
                   <li>Regelbruch nie mit Regelbruch beantworten – Clip → Support.</li>
                 </ul>
@@ -234,7 +233,7 @@
                 <ul>
                   <li>Schießen ohne klare Schussankündigung = <strong>RDM</strong>.</li>
                   <li>Ein Call gilt <strong>5 Minuten</strong>. Stirbt man, verfällt er.</li>
-                  <li>„Alle Hände hoch“/Massencalls sind verboten. Unklare Calls sind ungültig.</li>
+                  <li>Massencalls/unklare Calls sind ungültig.</li>
                   <li>Fahrzeugdiebstahl vor den Augen des Besitzers → indirekter Call.</li>
                   <li>Drive-by ist erlaubt; Drittpartei ohne Merkmale nicht.</li>
                   <li><strong>VDM</strong> (bewusstes Überfahren) ist verboten.</li>
@@ -249,7 +248,7 @@
                 <ul>
                   <li>Dächer/Container als unfairen Highground besetzen ist untersagt (außer Gangwar-Ausnahmen).</li>
                   <li>Soundboards nur, wenn niemand gestört wird; verbotene Inhalte → Sanktion.</li>
-                  <li>Vollmaskierte Personen dürfen nicht über Stimme/Akzent identifiziert werden.</li>
+                  <li>Vollmaskierte dürfen nicht über Stimme/Akzent erkannt werden.</li>
                 </ul>
               </div>
             </div>
@@ -269,7 +268,7 @@
                 <ul>
                   <li>Spawn, LSMD/SSMC, Kleidungsläden, Waffenläden, LSC/Benny’s/NB Performance</li>
                   <li>DoJ, Taxi, Anwälte, Clubs, Abschlepp, Bekleidung/Friseur, legale Farmen, LifeInvader, Rennbahn, Restaurants (nicht Crime-geführt)</li>
-                  <li>Abcampen & Call rein/raus aus Safezones sind ungültig und werden als RDM gewertet.</li>
+                  <li>Abcampen & Call rein/raus aus Safezones sind ungültig → RDM.</li>
                 </ul>
               </div>
             </div>
@@ -289,8 +288,8 @@
               <div class="subacc-c">
                 <ul>
                   <li>Waffe am Kopf → keine Waffe ziehen; Leben schützen.</li>
-                  <li>Schwere Demütigung kann Fear-RP aussetzen (z. B. Vergewaltigungs-RP ist verboten).</li>
-                  <li>Unrealistisches Ausweichen von Schüssen ist zu vermeiden.</li>
+                  <li>Schwere Demütigung kann Fear-RP aussetzen (Vergewaltigungs-RP ist verboten).</li>
+                  <li>Unrealistisches Ausweichen von Schüssen vermeiden.</li>
                 </ul>
               </div>
             </div>
@@ -300,7 +299,7 @@
               <div class="subacc-c">
                 <ul>
                   <li>Extrem beschädigte Fahrzeuge nicht weiterfahren; Motorrad/Fahrrad: Platten = stoppen.</li>
-                  <li>Zivilisten dürfen max. zu 6 agieren, mit einheitlicher Kleidung oder 2 klaren Merkmalen.</li>
+                  <li>Zivilisten: maximal 6 gemeinsam, mit einheitlicher Kleidung oder 2 klaren Merkmalen.</li>
                 </ul>
               </div>
             </div>
@@ -337,7 +336,7 @@
                 <ul>
                   <li><strong>RDM</strong>: Töten/Beschießen ohne RP-Hintergrund/Call.</li>
                   <li><strong>VDM</strong>: Sinnloses Anfahren/Überfahren.</li>
-                  <li><strong>Fail-RP</strong>: Unrealistisches Handeln (z. B. Hochhaus-Sprünge, Emote-Missbrauch im Kampf, Sprechen als Bewusstloser, etc.).</li>
+                  <li><strong>Fail-RP</strong>: Unrealistisches Handeln (z. B. Emote-Missbrauch im Kampf, Sprechen als Bewusstloser …).</li>
                 </ul>
               </div>
             </div>
@@ -347,7 +346,7 @@
                 <ul>
                   <li><strong>Meta-Gaming</strong>: OOC-Infos IC nutzen (inkl. Streams/Chats/Voice außerhalb).</li>
                   <li><strong>Power-RP</strong>: Situationen aufzwingen (z. B. ATM-Auszahlungen erzwingen).</li>
-                  <li><strong>Combat Logging / RP-Flucht</strong>: Ausloggen/Ausbluten um RP zu verlassen.</li>
+                  <li><strong>Combat Logging / RP-Flucht</strong>: Ausloggen/Ausbluten, um RP zu verlassen.</li>
                 </ul>
               </div>
             </div>
@@ -355,7 +354,7 @@
               <div class="subacc-h"><div class="name">New-Life / Backseat / Ninja</div><div class="plus">+</div></div>
               <div class="subacc-c">
                 <ul>
-                  <li><strong>New-Life</strong>: Im Krankenhaus aufgewacht → an letzte Situation nicht teilnehmen; 15 Min keine illegalen Aktionen nach Reanimation.</li>
+                  <li><strong>New-Life</strong>: Krankenhaus → an letzte Situation nicht teilnehmen; 15 Min keine illegalen Aktionen nach Reanimation.</li>
                   <li><strong>Backseat-Gaming</strong>: Anweisungen von Außenstehenden befolgen → verboten.</li>
                   <li><strong>Ninja-RP</strong>: Ohne Bezug in Situationen reinplatzen → verboten.</li>
                 </ul>
@@ -452,7 +451,7 @@
                 <ul>
                   <li>Raub realistisch – keine Übertreibung der Beute ohne RP-Bezug.</li>
                   <li>Illegale Routen: Raub nur am Sammler/Verarbeiter/Käufer, nicht „auf dem Weg“ ohne RP.</li>
-                  <li>Items, die nur aus Cases stammen, dürfen abgenommen werden; Uhren/Taschen/Brillen nicht.</li>
+                  <li>Items aus Cases dürfen abgenommen werden; Uhren/Taschen/Brillen nicht.</li>
                 </ul>
               </div>
             </div>
@@ -488,7 +487,7 @@
           <div class="acc-c">
             <p>Beispiele (nicht abschließend):</p>
             <ul>
-              <li>„Regelwerk/Bibel“ in OOC-Anspielung, „X-Muskel/Taste“, „Dashcam/Livestream/Eule“ o. ä.</li>
+              <li>„Regelwerk/Bibel“ als OOC-Anspielung, „X-Muskel/Taste“, „Dashcam/Livestream/Eule“ u. ä.</li>
               <li>Schwere Beleidigungen (Familie), sexistische/rassistische Slurs.</li>
               <li>„Götter/PowerRanger/Oben/Suppe…“ als Support-Anspielung.</li>
             </ul>
@@ -832,12 +831,11 @@ function runSearch(){
   });
 }
 
-/* Navbar: Tab-Shortcuts (Start/Regelwerk/Fraktion/Philosophie) */
+/* Navbar: Tab-Shortcuts */
 document.querySelectorAll('[data-goto-tab]').forEach(link=>{
   link.addEventListener('click', (ev)=>{
     const tabName = link.getAttribute('data-goto-tab');
     if(tabName){
-      // Aktiven Tab setzen
       tabs.forEach(b=>b.classList.toggle('active', b.dataset.tab===tabName));
       Object.entries(tabViews).forEach(([k,v])=>v.classList.toggle('active', k===tabName));
       activeTab = tabName; buildJump(); clearSearchState();
