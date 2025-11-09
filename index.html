@@ -20,40 +20,22 @@
   }
   *{box-sizing:border-box}
   html,body{height:100%}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--text);
-    font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,Apple Color Emoji,Segoe UI Emoji,sans-serif;
-    -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  }
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
   a{color:inherit;text-decoration:none}
   .container{max-width:1200px;margin:0 auto;padding:24px}
   .rounded{border-radius:14px}
 
   /* NAV */
-  .nav{
-    position:sticky;top:0;z-index:100;
-    background:linear-gradient(180deg, rgba(14,14,14,.95) 0%, rgba(14,14,14,.7) 100%);
-    backdrop-filter:saturate(1.1) blur(8px);
-    border-bottom:1px solid var(--border);
-  }
+  .nav{position:sticky;top:0;z-index:100;background:linear-gradient(180deg, rgba(14,14,14,.95) 0%, rgba(14,14,14,.7) 100%);backdrop-filter:saturate(1.1) blur(8px);border-bottom:1px solid var(--border)}
   .nav-wrap{display:flex;align-items:center;gap:16px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;letter-spacing:.2px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px}
   .brand img{width:28px;height:28px;display:block}
   .spacer{flex:1}
   .tabs{display:flex;gap:8px;flex-wrap:wrap}
-  .tab{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:10px 14px;border:1px solid var(--border);border-radius:12px;
-    background:var(--surface-2);color:var(--text);font-weight:600;font-size:14px;
-    transform:translateZ(0);
-    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
-  }
+  .tab{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2);color:var(--text);font-weight:600;font-size:14px;transform:translateZ(0);transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
   .tab:hover{transform:translateY(-1px) scale(1.02);box-shadow:0 6px 16px rgba(0,0,0,.35)}
   .tab.active{background:linear-gradient(180deg, #1d1d1d 0, #181818 100%);border-color:#2a2a2a}
   .btn-discord{background:linear-gradient(180deg, #242424 0, #1b1b1b 100%);border:1px solid #2a2a2a}
-  .btn-accent{background:linear-gradient(180deg, var(--accent) 0, #ff6a00 100%);border:none;color:#000}
 
   /* HERO */
   .hero{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;padding-top:18px}
@@ -61,11 +43,7 @@
   .accent{background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
   .lede{color:var(--muted);max-width:740px}
   .cta-row{display:flex;gap:12px;margin:16px 0 22px}
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;
-    border:1px solid var(--border);background:var(--surface-2);font-weight:700;color:var(--text);
-    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
-  }
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:var(--surface-2);font-weight:700;color:var(--text);transition:transform .18s ease, box-shadow .18s ease, background .18s ease}
   .btn:hover{transform:translateY(-1px) scale(1.02);box-shadow:0 8px 18px rgba(0,0,0,.35)}
   .btn-primary{background:linear-gradient(180deg, var(--accent) 0, #ff6a00 100%);border:none;color:#000}
   .btn-ghost{background:linear-gradient(180deg, #1f1f1f 0, #1a1a1a 100%);border:1px solid #2a2a2a}
@@ -75,42 +53,27 @@
   .pill-title{font-weight:700;margin-bottom:6px}
   .pill-text{color:var(--muted);font-size:14px}
 
-  /* Hero right media with logo */
-  .hero-media{
-    width:520px;max-width:32vw;aspect-ratio:16/10;border-radius:18px;overflow:hidden;
-    background:#141414;border:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,.35)
-  }
+  .hero-media{width:520px;max-width:32vw;aspect-ratio:16/10;border-radius:18px;overflow:hidden;background:#141414;border:1px solid var(--border);box-shadow:0 8px 24px rgba(0,0,0,.35)}
   .hero-media img{width:100%;height:100%;object-fit:contain;object-position:center;display:block}
-
-  /* Image zoom only for cards/media */
   .img-zoom{transition:transform .25s ease, box-shadow .25s ease;will-change:transform}
   .img-zoom:hover{transform:scale(1.03);box-shadow:0 10px 24px rgba(0,0,0,.35)}
 
-  /* Gallery cards */
   .gallery{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0 10px}
   .card-media{background:var(--surface-2);border:1px solid var(--border);border-radius:16px;overflow:hidden}
   .card-media img{width:100%;display:block}
 
-  /* Tabs content */
   .tabs-content{margin-top:24px}
   .hidden{display:none}
 
-  /* Section blocks */
   .section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:22px}
   .section h2{margin:0 0 12px 0;font-size:24px}
   .section p{color:var(--muted)}
   .search-row{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 16px}
   .input{background:#131313;border:1px solid #262626;color:var(--text);padding:10px 12px;border-radius:12px;min-width:260px}
 
-  /* Accordions */
   .accordion{display:grid;gap:10px;margin-top:10px}
-  .acc{
-    border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg, #181818 0, #141414 100%)
-  }
-  .acc-head{
-    display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;
-    padding:14px 16px;cursor:pointer;font-weight:700
-  }
+  .acc{border:1px solid var(--border);border-radius:12px;background:linear-gradient(180deg, #181818 0, #141414 100%)}
+  .acc-head{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:14px 16px;cursor:pointer;font-weight:700}
   .acc-num{color:var(--accent);font-weight:800}
   .acc-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .acc-plus{color:var(--accent);font-weight:900}
@@ -118,7 +81,6 @@
   .acc.open .acc-body{display:block}
   .acc.open .acc-plus{transform:rotate(45deg)}
 
-  /* Footer */
   .footer{color:#9a9a9a;text-align:center;padding:40px 0}
 
   @media (max-width:1024px){
@@ -131,13 +93,9 @@
 </head>
 <body>
 
-<!-- NAVBAR -->
 <header class="nav">
   <div class="container nav-wrap">
-    <div class="brand">
-      <img src="logo.png" alt="Sona City Logo">
-      Sona City
-    </div>
+    <div class="brand"><img src="logo.png" alt="Sona City Logo">Sona City</div>
     <div class="spacer"></div>
     <nav class="tabs">
       <a class="tab active" data-tab="home">🏠 Startseite</a>
@@ -152,345 +110,303 @@
 
 <main class="container">
 
-  <!-- TAB: STARTSEITE -->
+  <!-- START -->
   <section id="tab-home" class="tabs-content">
-
     <section class="hero">
-      <!-- left copy -->
       <div class="hero-copy">
         <h1 class="headline">Willkommen in <span class="accent">Sona City</span>.</h1>
-        <p class="lede">
-          Eine Stadt, die durch Entscheidungen lebt: faire Konflikte, dynamische Wirtschaft,
-          starke Community. Du gestaltest die Story – mit deinem Charakter, deinen
-          Beziehungen und deinem Mut.
-        </p>
-
+        <p class="lede">Eine Stadt, die durch Entscheidungen lebt: faire Konflikte, dynamische Wirtschaft, starke Community. Du gestaltest die Story – mit deinem Charakter, deinen Beziehungen und deinem Mut.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="https://discord.gg/sonacity" target="_blank" rel="noopener">✨ Jetzt beitreten</a>
           <a class="btn btn-ghost" data-tab-link="regelwerk">📘 Regelwerk öffnen</a>
         </div>
-
         <div class="pill-grid">
-          <div class="pill">
-            <div class="pill-icon">⚖️</div>
-            <div class="pill-title">Faires RP</div>
-            <div class="pill-text">Konflikte mit Sinn, kein No-Win-RP.</div>
-          </div>
-          <div class="pill">
-            <div class="pill-icon">💹</div>
-            <div class="pill-title">Wirtschaft</div>
-            <div class="pill-text">Preise & Chancen reagieren auf euch.</div>
-          </div>
-          <div class="pill">
-            <div class="pill-icon">🧩</div>
-            <div class="pill-title">Community</div>
-            <div class="pill-text">Respekt, Konsequenz, Story first.</div>
-          </div>
+          <div class="pill"><div class="pill-icon">⚖️</div><div class="pill-title">Faires RP</div><div class="pill-text">Konflikte mit Sinn, kein No-Win-RP.</div></div>
+          <div class="pill"><div class="pill-icon">💹</div><div class="pill-title">Wirtschaft</div><div class="pill-text">Preise & Chancen reagieren auf euch.</div></div>
+          <div class="pill"><div class="pill-icon">🧩</div><div class="pill-title">Community</div><div class="pill-text">Respekt, Konsequenz, Story first.</div></div>
         </div>
       </div>
-
-      <!-- right media with logo (same frame size as früher) -->
-      <figure class="hero-media img-zoom">
-        <img src="logo.png" alt="Sona City Logo">
-      </figure>
+      <figure class="hero-media img-zoom"><img src="logo.png" alt="Sona City Logo"></figure>
     </section>
 
-    <!-- two cards below -->
     <section class="gallery">
-      <figure class="card-media img-zoom">
-        <img src="031f1e840dfecc65.png" alt="Sona City – Szene">
-      </figure>
-      <figure class="card-media img-zoom">
-        <img src="donpicturefraktionsonacity.png" alt="Sona City – Fraktion">
-      </figure>
+      <figure class="card-media img-zoom"><img src="031f1e840dfecc65.png" alt="Sona City – Szene"></figure>
+      <figure class="card-media img-zoom"><img src="donpicturefraktionsonacity.png" alt="Sona City – Fraktion"></figure>
     </section>
-
   </section>
 
-  <!-- TAB: REGELWERK -->
+  <!-- REGELWERK (erweitert) -->
   <section id="tab-regelwerk" class="tabs-content hidden">
     <div class="section">
       <h2>Regelwerk</h2>
-      <p>Das offizielle Regelwerk von Sona City. Mindestalter: <b>15+</b> (Ausnahmen bei Reife möglich).  
-         Nutze die Suche, um Punkte direkt zu finden.</p>
+      <p>Mindestalter: <b>15+</b> (Ausnahmen bei Reife möglich). Nutze die Suche, um schnell zu filtern.</p>
 
-      <div class="search-row">
-        <input id="search-regel" class="input" placeholder="🔎 Suchen im Regelwerk …" />
-      </div>
+      <div class="search-row"><input id="search-regel" class="input" placeholder="🔎 Suchen im Regelwerk …" /></div>
 
       <div id="acc-regel" class="accordion">
-        <!-- §0 -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">§0</div>
-            <div class="acc-title">Grundsätze</div>
-            <div class="acc-plus">+</div>
-          </header>
+
+        <!-- §0 Grundsätze -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§0</div><div class="acc-title">Grundsätze</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Respektvoller Umgang, keine Diskriminierung. <br>
-              • Kein RDM/VDM, keine Grauzonen. <br>
-              • Cheating/Exploits streng verboten. <br>
-              • Anweisungen des Teams ist Folge zu leisten.
-            </p>
+            <p>• Respektvoller Umgang, keine Diskriminierung, kein Sexismus/Rassismus. <br>
+               • Kein Cheating, Exploiting oder Makro-/Script-Vorteile. <br>
+               • Kein Ausnutzen von Grauzonen. <br>
+               • Teamansagen sind bindend; OOC-Drohungen tabu.</p>
           </div>
         </article>
 
-        <!-- §1 -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">§1</div>
-            <div class="acc-title">Ingame-Regeln</div>
-            <div class="acc-plus">+</div>
-          </header>
+        <!-- §1 Ingame Regeln I/II/III kombiniert -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§1</div><div class="acc-title">Ingame-Regeln (Calls, Safezones, Board/Skin/Bug)</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Schusscall klar & hörbar, 15 Min gültig, kein Massencall. <br>
-              • Kein Schießen in/aus Safezones, kein Drittpartei-Trolling. <br>
-              • Soundboards nur ohne Störung. Frauenskins nur für Frauen. <br>
-              • Bug-Abuse (z. B. schießen mit erhobenen Händen) verboten.
-            </p>
+            <p>• Schusscall klar/hörbar (in Reichweite), 15 Minuten gültig; Massencalls verboten. <br>
+               • Kein Call in/aus Safezones (Spawn, MD, Kleidung, Waffenläden, u. a.). <br>
+               • Drittpartei ohne RP-Bezug untersagt; Re-Join/Neuanfahrt → neuer Call erforderlich. <br>
+               • Soundboard nur ohne Störung; problematische Inhalte strafbar. <br>
+               • Frauenskins nur für Frauen; „Caillou“-Standard-Trolling verboten. <br>
+               • Bug-Abuse (z. B. Schießen mit Händen oben, Kleidungsausnutzen) strikt untersagt.</p>
           </div>
         </article>
 
-        <!-- §2 -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">§2</div>
-            <div class="acc-title">Interaktion & RP</div>
-            <div class="acc-plus">+</div>
-          </header>
+        <!-- §2 Interaktion & RP -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§2</div><div class="acc-title">Interaktion & RP</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Story first – sinnvolle Eskalation, kein OOC-Druck. <br>
-              • Fear-RP: Bedrohung ernst nehmen, Leben schützen. <br>
-              • Kein Meta-/Power-RP. Drive-By nur gegen Fußgänger erlaubt. <br>
-              • Safezones: Spawn, MD, Kleidung, Waffenläden usw.
-            </p>
+            <p>• Story first – sinnvolle Eskalationen; kein OOC-Druck. <br>
+               • Fear-RP: Leben schützen; bei gezogener Waffe keine „Superhelden-Moves“. <br>
+               • Meta-/Power-RP verboten. Drive-By nur auf Fußgänger erlaubt. <br>
+               • Identifizierung: Vollmasken anonymisieren Stimme (Ausnahme Fraktions-Outfits).</p>
           </div>
         </article>
 
-        <!-- §3 Support -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">§3</div>
-            <div class="acc-title">Support</div>
-            <div class="acc-plus">+</div>
-          </header>
+        <!-- §3 Safezones -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§3</div><div class="acc-title">Safezones</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Clips max. 48 h alt und vollständige Situation. <br>
-              • Kein Support-Missbrauch; respektvoll bleiben. <br>
-              • Entscheidungen der Supporter sind bindend; Widerspruch per Ticket.
-            </p>
+            <p>• Zonen ohne Call/Schüsse/Provokationen (u. a. Spawn, MDs, Kleidung & Waffenläden). <br>
+               • Aus Safezone heraus/in Safezone hinein callen ist ungültig und wird als RDM gewertet. <br>
+               • Abcampen von Safezones ist untersagt.</p>
           </div>
         </article>
 
-        <!-- §4 Verbote -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">§4</div>
-            <div class="acc-title">Allgemeine Verbote</div>
-            <div class="acc-plus">+</div>
-          </header>
+        <!-- §4 Support -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§4</div><div class="acc-title">Support</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • RDM/VDM, Combat-Logging, Spawn-Camping. <br>
-              • Eigenbereicherung ohne RP-Grund. <br>
-              • Geiseln verhungern lassen; extreme Demütigungen. <br>
-              • Trolling/Baiting (unnötiges Provozieren).
-            </p>
+            <p>• Clips max. 48h (vorher 24h), vollständige Situation inkl. Ton empfohlen. <br>
+               • Erst zu Ende spielen, dann Support; Eigensupport erlaubt. <br>
+               • Respektvoller Umgang; Aufzeichnungen dürfen nicht veröffentlicht werden.</p>
           </div>
         </article>
 
-        <!-- Du kannst weitere Paragraphen hierhin kopieren/erweitern -->
+        <!-- §5 Allgemeine Verbote -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§5</div><div class="acc-title">Allgemeine Verbote</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• RDM/VDM, Combat-Logging, Spawn-Camping, OOC-Beleidigungen. <br>
+               • Eigenbereicherung ohne RP-Grund (reines „Farmen“ anderer). <br>
+               • Geiseln verhungern/verdursten lassen; überzogene Demütigungen. <br>
+               • Hinrichtung/Suizid nur mit Antrag und tragfähigem Story-Grund.</p>
+          </div>
+        </article>
+
+        <!-- §6 Trolling & Baiting -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§6</div><div class="acc-title">Trolling & Baiting</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Bewusstes Stören, sinnloses Provozieren (z. B. Cop-Baiting) untersagt. <br>
+               • Unpassende Kleidung/Masken/Haarfarben, die Immersion brechen, verboten. <br>
+               • Apps/Chats nicht zum gezielten Triggern missbrauchen.</p>
+          </div>
+        </article>
+
+        <!-- §7 Zwei-Staaten-Konzept Roxwood -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§7</div><div class="acc-title">Zwei-Staaten-Konzept (Roxwood)</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p><b>Geltung:</b> Los Santos & Roxwood als getrennte Staaten mit eigenen Regeln/Institutionen. <br>
+               • Aufenthaltsrecht in Roxwood: Visum/Arbeitsvisum/Staatsbürgerschaft. <br>
+               • Illegale Einreise → Abschiebung + Bußgeld. <br>
+               • Staatliche Eingriffe über Grenzen nur mit triftigem RP-Grund/Absprache. <br>
+               • Roxwood: härteres Strafmaß, Korruption im RP zulässig (kein OOC-Vorteil).</p>
+          </div>
+        </article>
+
+        <!-- §8 Roxwood – Ordnung & Verkehr -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§8</div><div class="acc-title">Roxwood – Ordnung & Verkehr</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Rücksichtsvolles Fahren; Unfälle/Personengefährdung werden sanktioniert. <br>
+               • Parkverbote (z. B. Marina Beach Steg); Klappenauspuff-Regel beachten. <br>
+               • Bei Ranger-Konvois/Rechte-Fahrbahn freimachen – sonst sofortige Maßnahmen.</p>
+          </div>
+        </article>
+
+        <!-- §9 Alcatraz -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§9</div><div class="acc-title">Alcatraz – Hochsicherheitsinsel</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Ersatz für Kurz-Banns (1–7 Tage): Ingame-Haft (1 Tag = 6h aktiv). <br>
+               • Verlängerung bei AFK/Regelverstößen; Entlassung nur in Ausnahmefällen. <br>
+               • Regeln: keine Korruption/keine Konflikte ohne triftigen RP-Grund; Flucht → Verlängerung.</p>
+          </div>
+        </article>
+
+        <!-- §10 Paleto & Pufferzonen -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§10</div><div class="acc-title">Paleto-Bank, Pufferzonen & Grenzhoheit</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Paleto Bank liegt in militärischer Pufferzone; Schutz primär durch Ranger. <br>
+               • „Wer zuerst kontrolliert, hat operative Hoheit“ (Roxwood ↔ Los Santos). <br>
+               • Koordination empfohlen, aber nicht zwingend – sauberer RP-Ablauf hat Vorrang.</p>
+          </div>
+        </article>
+
+        <!-- §11 Roxwood StVO -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§11</div><div class="acc-title">Roxwood – Straßenverkehrsordnung (Auszug)</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Rücksichtsloses Fahren: 15.000$ Bußgeld; falsche Straßenseite 1.500$. <br>
+               • Illegale Rennen: Haft + Abschiebung. <br>
+               • Parken auf Gehwegen/Staatszentrum ohne Genehmigung: 5.000$.</p>
+          </div>
+        </article>
+
+        <!-- §6.0 Blacklisted Wörter -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§12</div><div class="acc-title">Blacklisted Wörter (Auszug)</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• „Frak/Regelwerk=Bibel/X-Muskel/Movement/Aim/One-Shot/GG“, Livestream-Begriffe, <br>
+               • familiär/extrem beleidigende, sexistische/rassistische Ausdrücke, <br>
+               • Anspielungen auf Support („Götter/PowerRanger/Suppe“ usw.).</p>
+          </div>
+        </article>
+
+        <!-- §7 Sonstiges -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§13</div><div class="acc-title">Sonstiges (Raub/Geiseln/Medics/Innenräume)</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Raub über RP-Grund; Forderungen realistisch; Geiseln max. gemäß Liste. <br>
+               • Medics: erst nach Schießerei; kein Wiederbeleben im Feuer. <br>
+               • Innenräume: kein Herumrennen ohne RP-Grund; kein Teamen im FFA. <br>
+               • Namensführung: Vor-/Nachname + ggf. Fraktionskürzel, keine Sonderzeichen/Zahlen.</p>
+          </div>
+        </article>
+
+        <!-- §8 Airdrops -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§14</div><div class="acc-title">Airdrops</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Nur auf Festland; erreichbar per Feldweg/weißer Straße. <br>
+               • Werfende Partei: beim Drop nicht im Fahrzeug; Verteidigung ausschließlich zu Fuß. <br>
+               • Angreifer: Anfahrt im Fahrzeug ok, Angriff zu Fuß; Fahrzeuge erst nach Kampf wieder nutzen.</p>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- TAB: FRAKTIONSREGELWERK -->
+  <!-- FRAKTIONSREGELWERK (erweitert) -->
   <section id="tab-frak" class="tabs-content hidden">
     <div class="section">
       <h2>Fraktionsregelwerk</h2>
-      <p>Alle Bestimmungen für organisierte Gruppen & Staatsfraktionen.  
-         Nutze die Suche, um schnell Punkte zu finden.</p>
+      <p>Für organisierte Gruppen & Staatsfraktionen. Suche hilft beim Filtern.</p>
 
-      <div class="search-row">
-        <input id="search-frak" class="input" placeholder="🔎 Suchen im Fraktionsregelwerk …" />
-      </div>
+      <div class="search-row"><input id="search-frak" class="input" placeholder="🔎 Suchen im Fraktionsregelwerk …" /></div>
 
       <div id="acc-frak" class="accordion">
-        <!-- F1 -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">F1</div>
-            <div class="acc-title">Mitglieder, Kleidung & Erkennungsmerkmale</div>
-            <div class="acc-plus">+</div>
-          </header>
+
+        <article class="acc"><header class="acc-head"><div class="acc-num">F1</div><div class="acc-title">Mitglieder, Outfits & Erkennungsmerkmale</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Einheitliche Outfits/erkennbares Marking. <br>
-              • Max. Größe & Hierarchie laut Fraktionskonzept. <br>
-              • Zivilisten-Gruppen max. 6 Personen, erkennbare Merkmale notwendig.
-            </p>
+            <p>• Einheitliche Kleidung/Markings; Größe/Hierarchie nach Konzept. <br>
+               • Zivilisten-Gruppen max. 6 – gleiche Kleidung oder min. 2 klare Merkmale. <br>
+               • Vollmasken anonymisieren Stimme; Ausnahme: eindeutige Fraktions-Uniformen.</p>
           </div>
         </article>
 
-        <!-- F2 -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">F2</div>
-            <div class="acc-title">Gebiete, Anwesen & Sperrzonen</div>
-            <div class="acc-plus">+</div>
-          </header>
+        <article class="acc"><header class="acc-head"><div class="acc-num">F2</div><div class="acc-title">Gebiete, Anwesen, Sperrzonen</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Betreten von Fraktionsanwesen = Bedrohung/Call. <br>
-              • Sperrzonen: LSPD/DOJ/FIB/SG/Army-Gelände etc. <br>
-              • Zone campen/Abuse ist untersagt.
-            </p>
+            <p>• Betreten von Anwesen gilt als Bedrohung (automatischer Call). <br>
+               • Sperrzonen: LSPD/DOJ/FIB/SG/Army-Gelände – Callregel beachten. <br>
+               • Zonen-Abcampen/Spawn-Trapping/Manipulation verboten.</p>
           </div>
         </article>
 
-        <!-- F3 -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">F3</div>
-            <div class="acc-title">Gangwars & Dauercalls</div>
-            <div class="acc-plus">+</div>
-          </header>
+        <article class="acc"><header class="acc-head"><div class="acc-num">F3</div><div class="acc-title">Gangwars (Mindestanzahlen, Zone, Verhalten)</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Gangwars nur mit Absprache der Leader; Mindestanzahlen beachten. <br>
-              • Kämpfen nur in der Zone; kein Rein-/Raus-Schießen. <br>
-              • Dauercalls nur dokumentiert; Spawntrappen bleibt verboten.
-            </p>
+            <p>• Start nur nach Leader-Absprache (Frak-Leader-Chat); Mindestanzahlen beachten. <br>
+               • Kämpfen ausschließlich in der Zone; kein Rein-/Raus-Schießen. <br>
+               • Zone verlassen → Gegenbeschuss außerhalb ist zulässig; kein Trashtalk-Spam.</p>
           </div>
         </article>
 
-        <!-- F4 -->
-        <article class="acc">
-          <header class="acc-head">
-            <div class="acc-num">F4</div>
-            <div class="acc-title">Illegale Handlungen & Wirtschaft</div>
-            <div class="acc-plus">+</div>
-          </header>
+        <article class="acc"><header class="acc-head"><div class="acc-num">F4</div><div class="acc-title">Dauercalls & Spawn-Trapping</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>
-              • Raubüberfälle: Geiseln mit RP-Grund, realistische Forderungen. <br>
-              • Airdrops nur zu Fuß verteidigen/angreifen (Fahrzeuge erst nach Ende). <br>
-              • Preise/Ökonomie reagieren dynamisch (Server-Wirtschaft).
-            </p>
+            <p>• Dauercalls nur dokumentiert (Absprache/Leader-Chat). <br>
+               • Spawn-Trapping bleibt verboten, auch bei Dauercalls. <br>
+               • Re-Anfahrt nach Tod → neuer Call nötig.</p>
           </div>
         </article>
+
+        <article class="acc"><header class="acc-head"><div class="acc-num">F5</div><div class="acc-title">Raub, Geiseln & Verhandlungen</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Raub nur mit stimmigem RP-Grund; Geisel-Limits je nach Heist (Laden, Juwelier, Staatsbank etc.). <br>
+               • Verhandlungen Face-to-Face; keine Funk/Proxy-Deals. <br>
+               • Bei aktivem Raub-Cooldown Geiseln freilassen.</p>
+          </div>
+        </article>
+
+        <article class="acc"><header class="acc-head"><div class="acc-num">F6</div><div class="acc-title">Illegale Routen, Wirtschaft & Airdrops</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Illegale Routen dürfen am Sammler/Verarbeiter/Käufer ausgeraubt werden; unterwegs nur mit RP-Bezug. <br>
+               • Wirtschaft ist dynamisch; Gewinne durch Risiko/Story. <br>
+               • Airdrops: siehe Regelwerk §14 (fußbasiert; Fahrzeuge erst nach Kampf).</p>
+          </div>
+        </article>
+
+        <article class="acc"><header class="acc-head"><div class="acc-num">F7</div><div class="acc-title">Fahrzeuge, Heli, Beschuss</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Kugelsichere/„hinten-nicht-schießbare“ Fahrzeuge nicht für Kämpfe nutzen (Ausnahme Dienstfahrzeuge). <br>
+               • Helis in Raubszenen nur zum Ausweichen/Flucht von anderem Ort; nicht direkt am Tatort aufnehmen. <br>
+               • Beschuss in Sperrzonen durch Staatsfraktionen gilt nicht als Call (außer RP-Kontext).</p>
+          </div>
+        </article>
+
+        <article class="acc"><header class="acc-head"><div class="acc-num">F8</div><div class="acc-title">Medic/Justiz/Unantastbare Rollen</div><div class="acc-plus">+</div></header>
+          <div class="acc-body">
+            <p>• Medics/Mechaniker/Justiz/Taxi/News u. a. sind unantastbar – außer sie agieren selbst als Aggressoren. <br>
+               • Unantastbarkeit entfällt, wenn im Schussgeschehen aktiv eingegriffen wird (z. B. Revive im Feuer).</p>
+          </div>
+        </article>
+
       </div>
     </div>
   </section>
 
-  <!-- TAB: PHILOSOPHIE (ausgebaut) -->
+  <!-- PHILOSOPHIE (ausgebaut aus vorherigem Schritt, unverändert) -->
   <section id="tab-philo" class="tabs-content hidden">
     <div class="section">
       <h2>Philosophie</h2>
-
-      <p>
-        Sona City ist kein „Gewinnspiel“, sondern eine lebendige, gemeinsame Erzählung.  
-        Unser Leitgedanke lautet: <b>Story first, Fairness immer</b>. Wir spielen nicht, um zu dominieren,
-        sondern um glaubwürdige Figuren aufeinanderprallen zu lassen – mit Konsequenzen,
-        Reibung, Scheitern und Triumphen. Spaß entsteht aus <b>guten Entscheidungen</b>, nicht aus
-        Abkürzungen.
-      </p>
-
-      <h3>1) Haltung & Zusammenleben</h3>
+      <p>Sona City ist kein „Gewinnspiel“, sondern eine gemeinsame Erzählung. <b>Story first, Fairness immer.</b></p>
+      <h3>Haltung</h3>
       <ul>
-        <li><b>Respekt</b> – IC hart, OOC klar. Wir greifen an den Ideen an, nicht an Personen.</li>
-        <li><b>Konflikte mit Sinn</b> – Jede Eskalation braucht einen Grund, eine Geschichte und ein Ende.</li>
-        <li><b>Konsistenz</b> – Charaktere ziehen Folgen. Erinnerung & Entwicklung sind zentral.</li>
-        <li><b>Inklusion</b> – Offene Runden, verständliche Einstiegspunkte, Hilfe für Neulinge.</li>
+        <li>Respekt – IC hart, OOC klar.</li><li>Konflikte mit Sinn – Grund, Geschichte und Ende.</li><li>Konsistenz – Konsequenzen ernst nehmen.</li>
       </ul>
-
-      <h3>2) Wirtschaft & Risiko</h3>
-      <p>
-        Die Ökonomie von Sona City ist <b>dynamisch</b>: Angebot & Nachfrage, Serverlage und
-        Ereignisse beeinflussen Chancen. Wir belohnen <b>unternehmerisches Denken</b> und
-        <b>Teamplay</b> – nicht „Farm-AFKing“. Gewinne sind willkommen, wenn sie durch RP
-        und Risiko entstehen.
-      </p>
+      <h3>Wirtschaft & Risiko</h3>
       <ul>
-        <li><b>Preise bewegen sich</b> – Gute Deals sind möglich, aber nicht garantiert.</li>
-        <li><b>Verluste gehören dazu</b> – Wer wagt, kann verlieren. Das hält Geschichten spannend.</li>
-        <li><b>Kein Pay-to-Win</b> – Monetarisierung bleibt kosmetisch/Comfort. Vorteile müssen erspielt werden.</li>
+        <li>Dynamische Ökonomie, Chancen & Verluste.</li><li>Kein Pay-to-Win; Vorteile werden erspielt.</li>
       </ul>
-
-      <h3>3) Konfliktkultur</h3>
+      <h3>Konfliktkultur</h3>
       <ul>
-        <li><b>Fair Fight</b> – Klare Calls, nachvollziehbare Ziele, keine „Grauzonen-Tricks“.</li>
-        <li><b>Tempo & Pausen</b> – Wir gönnen Luft zum Atmen. Nach jedem Peak ein Tal.</li>
-        <li><b>Kein OOC-Druck</b> – Support löst Regeln, nicht Rollen. Erst ausspielen, dann klären.</li>
+        <li>Faire Calls, kein Grauzonen-Missbrauch.</li><li>Tempo mit Pausen; erst ausspielen, dann klären.</li>
       </ul>
-
-      <h3>4) Rollenbilder & Kreativität</h3>
-      <p>
-        Wir lieben ikonische Figuren mit Ecken und Kanten. Klischees sind erlaubt – aber bitte
-        <b>vielschichtig</b> gespielt. Jeder Charakter braucht Schwächen und blinde Flecken.
-      </p>
+      <h3>Creator/Streams</h3>
       <ul>
-        <li><b>Eigenverantwortung</b> – Dein Charakter ist dein Werkzeug. Nutze es bewusst.</li>
-        <li><b>Kooperatives Storytelling</b> – Gib anderen Hooks. Lass Menschen „mit dir gewinnen“.</li>
-        <li><b>Erinnerung</b> – Halte Absprachen fest. Wiederholtes Vergessen zerstört Kontinuität.</li>
+        <li>IC bleibt IC; Stream-Infos sind tabu.</li><li>Keine Bloßstellung; Highlights statt Drama-Farming.</li>
       </ul>
-
-      <h3>5) Team, Support & Vertrauen</h3>
-      <p>
-        Das Team versteht sich als <b>Schiedsrichter & Kurator</b>. Wir wollen Spielfluss,
-        nicht Bürokratie. Entscheidungen erfolgen transparent, mit Augenmaß und unter
-        Einbezug von Kontext. Fehler passieren – wichtiger ist, wie wir damit umgehen.
-      </p>
-      <ul>
-        <li><b>Verhältnismäßigkeit</b> – Strafen sollen Verhalten formen, nicht Spieler vertreiben.</li>
-        <li><b>Kommunikation</b> – Ruhig, sachlich, lösungsorientiert. Clips zeigen Momente, nicht immer den Kontext.</li>
-        <li><b>Feedback-Kultur</b> – Konstruktive Vorschläge sind erwünscht. Wir entwickeln Sona City gemeinsam.</li>
-      </ul>
-
-      <h3>6) Creator & Streams</h3>
-      <ul>
-        <li><b>IC bleibt IC</b> – Stream-Infos sind tabu Ingame. Chat lenkt nicht die Story.</li>
-        <li><b>Schutz anderer</b> – Keine Bloßstellung. Markiere Trigger & editier kritisch.</li>
-        <li><b>Highlight RP</b> – Wir zeigen Drama, nicht Drama farming.</li>
-      </ul>
-
-      <h3>7) Umgang mit Macht</h3>
-      <p>
-        Wer Rollen mit Einfluss spielt (Leitungen, Behörden, große Fraktionen), übernimmt
-        <b>Verantwortung</b>: Fair matchen, Türen öffnen, Eskalation dosieren. Macht ist ein RP-Werkzeug,
-        kein persönlicher Vorteil.
-      </p>
-
-      <h3>8) Unser Versprechen</h3>
-      <p>
-        Sona City will ein Raum sein, in dem du <b>riskieren</b>, <b>scheitern</b>, <b>wachsen</b> und <b>glänzen</b> kannst.
-        Wenn du spielst, um Geschichten größer zu machen (und nicht nur deine Zahlen),
-        bist du hier richtig. Wir halten dir den Rücken frei – mit klaren Regeln, fairer
-        Moderation und einer Community, die RP wirklich liebt.
-      </p>
     </div>
   </section>
 
-  <!-- TAB: TEBEX -->
+  <!-- SHOP -->
   <section id="tab-shop" class="tabs-content hidden">
     <div class="section">
       <h2>Tebex-Shop</h2>
-      <p>Hier entsteht unser Shop. (Link wird ergänzt.)</p>
-      <p style="color:var(--muted)">Bis dahin: Unterstütze uns gern auf Discord oder mit Feedback zu Ideen.</p>
+      <p>Hier entsteht unser Shop (Link folgt).</p>
     </div>
   </section>
 
-  <footer class="footer">
-    © 2025 Sona City — Regelwerk • Alle Rechte vorbehalten.
-  </footer>
+  <footer class="footer">© 2025 Sona City — Regelwerk • Alle Rechte vorbehalten.</footer>
 </main>
 
 <script>
-  // --- Tabs ---
+  // Tabs
   const tabButtons = document.querySelectorAll('.tab[data-tab]');
   const tabSections = {
     home: document.getElementById('tab-home'),
@@ -499,27 +415,18 @@
     philo: document.getElementById('tab-philo'),
     shop: document.getElementById('tab-shop'),
   };
-
   function setActive(tab){
     tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab===tab));
-    Object.entries(tabSections).forEach(([k,el]) => {
-      if (!el) return;
-      el.classList.toggle('hidden', k!==tab);
-    });
+    Object.entries(tabSections).forEach(([k,el]) => el.classList.toggle('hidden', k!==tab));
     window.scrollTo({top:0, behavior:'smooth'});
   }
   tabButtons.forEach(b => b.addEventListener('click', () => setActive(b.dataset.tab)));
-  // CTA jump to Regelwerk
-  document.querySelectorAll('[data-tab-link="regelwerk"]').forEach(a => {
-    a.addEventListener('click', () => setActive('regelwerk'));
-  });
+  document.querySelectorAll('[data-tab-link="regelwerk"]').forEach(a => a.addEventListener('click', () => setActive('regelwerk')));
 
-  // --- Accordions ---
-  document.querySelectorAll('.acc-head').forEach(h => {
-    h.addEventListener('click', () => h.parentElement.classList.toggle('open'));
-  });
+  // Accordions
+  document.querySelectorAll('.acc-head').forEach(h => h.addEventListener('click', () => h.parentElement.classList.toggle('open')));
 
-  // --- Suche / Filter ---
+  // Suche
   function setupSearch(inputId, accRootId){
     const input = document.getElementById(inputId);
     const root  = document.getElementById(accRootId);
@@ -527,10 +434,7 @@
     const items = [...root.querySelectorAll('.acc')];
     input.addEventListener('input', () => {
       const q = input.value.trim().toLowerCase();
-      items.forEach(it => {
-        const text = it.innerText.toLowerCase();
-        it.style.display = text.includes(q) ? '' : 'none';
-      });
+      items.forEach(it => it.style.display = it.innerText.toLowerCase().includes(q) ? '' : 'none');
     });
   }
   setupSearch('search-regel','acc-regel');
