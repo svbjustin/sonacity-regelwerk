@@ -89,6 +89,62 @@
     .pill-grid{grid-template-columns:1fr}
     .gallery{grid-template-columns:1fr}
   }
+
+  /* =========================
+     MOBILE/ TABLET RESPONSIVE
+     (PC bleibt unverändert)
+     ========================= */
+  @media (max-width: 900px) {
+    .nav { padding: 10px 14px; }
+    .nav .container, .container.nav-wrap { gap: 10px; }
+
+    .brand {
+      display:flex; align-items:center; gap:10px;
+      margin:0 auto; order:1; font-size:18px; line-height:1;
+    }
+    .brand img { width:28px; height:28px; object-fit:contain; }
+
+    .tabs, #tabs {
+      order:2; display:flex; gap:10px; width:100%; overflow-x:auto;
+      -webkit-overflow-scrolling:touch; padding:6px 2px 4px; margin:6px 0 2px;
+      scrollbar-width:none;
+    }
+    .tabs::-webkit-scrollbar, #tabs::-webkit-scrollbar { display:none; }
+
+    .tab { flex:0 0 auto; padding:9px 12px; font-size:14px; border-radius:10px; transform:none !important; }
+
+    .section, .hero, .content { padding:18px 14px; }
+
+    .hero h1 { font-size: clamp(26px, 6vw, 40px); line-height:1.15; margin-bottom:10px; }
+    .hero p { font-size:15px; line-height:1.55; max-width:46ch; }
+
+    .cta-row, .hero-cta-row, .btn-row {
+      display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:520px;
+    }
+    .btn, .button, .cta { font-size:15px; padding:12px 16px; border-radius:12px; }
+
+    .grid-3, .grid-2, .card-grid, .features { display:grid; grid-template-columns:1fr; gap:12px; }
+    .feature, .card { padding:14px; border-radius:14px; }
+
+    .gallery, .gallery-row, .image-grid { display:grid; grid-template-columns:1fr; gap:14px; }
+    .gallery img, .image, .preview, .hero-media img, .media img {
+      width:100%; height:auto; border-radius:16px; object-fit:cover;
+    }
+
+    .accordion .acc-head, .acc-head { padding:14px 16px; font-size:15px; border-radius:12px; }
+    .accordion .acc-body, .acc-body { padding:14px 16px; font-size:14px; }
+
+    .regeln p, .regeln li { font-size:15px; line-height:1.55; }
+
+    .footer, footer { padding:18px 14px; }
+  }
+
+  @media (max-width: 600px) {
+    .brand { font-size:16px; }
+    .hero h1 { font-size: clamp(24px, 7vw, 36px); }
+    .tab { font-size:13px; padding:8px 10px; }
+    .btn, .button, .cta { font-size:14px; padding:11px 14px; }
+  }
 </style>
 </head>
 <body>
@@ -135,7 +191,7 @@
     </section>
   </section>
 
-  <!-- REGELWERK (erweitert) -->
+  <!-- REGELWERK -->
   <section id="tab-regelwerk" class="tabs-content hidden">
     <div class="section">
       <h2>Regelwerk</h2>
@@ -145,7 +201,6 @@
 
       <div id="acc-regel" class="accordion">
 
-        <!-- §0 Grundsätze -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§0</div><div class="acc-title">Grundsätze</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• Respektvoller Umgang, keine Diskriminierung, kein Sexismus/Rassismus. <br>
@@ -155,7 +210,6 @@
           </div>
         </article>
 
-        <!-- §1 Ingame Regeln I/II/III kombiniert -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§1</div><div class="acc-title">Ingame-Regeln (Calls, Safezones, Board/Skin/Bug)</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• Schusscall klar/hörbar (in Reichweite), 15 Minuten gültig; Massencalls verboten. <br>
@@ -167,7 +221,6 @@
           </div>
         </article>
 
-        <!-- §2 Interaktion & RP -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§2</div><div class="acc-title">Interaktion & RP</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• Story first – sinnvolle Eskalationen; kein OOC-Druck. <br>
@@ -177,7 +230,6 @@
           </div>
         </article>
 
-        <!-- §3 Safezones -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§3</div><div class="acc-title">Safezones</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• Zonen ohne Call/Schüsse/Provokationen (u. a. Spawn, MDs, Kleidung & Waffenläden). <br>
@@ -186,26 +238,23 @@
           </div>
         </article>
 
-        <!-- §4 Support -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§4</div><div class="acc-title">Support</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>• Clips max. 48h (vorher 24h), vollständige Situation inkl. Ton empfohlen. <br>
+            <p>• Clips max. 48h, vollständige Situation inkl. Ton empfohlen. <br>
                • Erst zu Ende spielen, dann Support; Eigensupport erlaubt. <br>
                • Respektvoller Umgang; Aufzeichnungen dürfen nicht veröffentlicht werden.</p>
           </div>
         </article>
 
-        <!-- §5 Allgemeine Verbote -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§5</div><div class="acc-title">Allgemeine Verbote</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• RDM/VDM, Combat-Logging, Spawn-Camping, OOC-Beleidigungen. <br>
-               • Eigenbereicherung ohne RP-Grund (reines „Farmen“ anderer). <br>
+               • Eigenbereicherung ohne RP-Grund. <br>
                • Geiseln verhungern/verdursten lassen; überzogene Demütigungen. <br>
                • Hinrichtung/Suizid nur mit Antrag und tragfähigem Story-Grund.</p>
           </div>
         </article>
 
-        <!-- §6 Trolling & Baiting -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§6</div><div class="acc-title">Trolling & Baiting</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• Bewusstes Stören, sinnloses Provozieren (z. B. Cop-Baiting) untersagt. <br>
@@ -214,86 +263,44 @@
           </div>
         </article>
 
-        <!-- §7 Zwei-Staaten-Konzept Roxwood -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§7</div><div class="acc-title">Zwei-Staaten-Konzept (Roxwood)</div><div class="acc-plus">+</div></header>
+        <!-- NEU: Raub & Geiseln (bereinigt + deine Werte) -->
+        <article class="acc"><header class="acc-head"><div class="acc-num">§7</div><div class="acc-title">Raub & Geiseln (Sona City Vorgaben)</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p><b>Geltung:</b> Los Santos & Roxwood als getrennte Staaten mit eigenen Regeln/Institutionen. <br>
-               • Aufenthaltsrecht in Roxwood: Visum/Arbeitsvisum/Staatsbürgerschaft. <br>
-               • Illegale Einreise → Abschiebung + Bußgeld. <br>
-               • Staatliche Eingriffe über Grenzen nur mit triftigem RP-Grund/Absprache. <br>
-               • Roxwood: härteres Strafmaß, Korruption im RP zulässig (kein OOC-Vorteil).</p>
+            <p><b>Hinweise:</b> Verhandlungen müssen <b>immer In-Character (IC)</b> und <b>persönlich vor Ort</b> geführt werden (keine Funk/Proxy-Deals). <br>
+               Das <b>Erpressen von Fraktions-Items</b> (Dienstwaffen, Ausrüstung etc.) ist <b>verboten</b>.</p>
+            <ul>
+              <li><b>Laden:</b> benötigt <b>3 aktive Beamte</b> · <b>max. 3 Geiseln</b> · (keine Mindestanzahl Räuber vorgegeben)</li>
+              <li><b>Juwelier:</b> <b>mind. 3 Räuber</b> · <b>5 aktive Beamte</b> · <b>max. 5 Geiseln</b></li>
+              <li><b>Staatsbank:</b> <b>mind. 4 Räuber</b> · <b>7 aktive Beamte</b> · <b>max. 5 Geiseln</b></li>
+              <li><i>Außerhalb von Raubsituationen:</i> <b>max. 4 Geiseln</b> erlaubt.</li>
+            </ul>
+            <p style="color:var(--muted)">Hinweis: Raubarten wie Paleto, Yacht, Human Labs, ATM/Bitcoin-ATM und Ammu-Nation existieren auf Sona City nicht und sind daher entfernt.</p>
           </div>
         </article>
 
-        <!-- §8 Roxwood – Ordnung & Verkehr -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§8</div><div class="acc-title">Roxwood – Ordnung & Verkehr</div><div class="acc-plus">+</div></header>
+        <article class="acc"><header class="acc-head"><div class="acc-num">§8</div><div class="acc-title">Sonstiges (Medics/Innenräume/Namen/FFA)</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>• Rücksichtsvolles Fahren; Unfälle/Personengefährdung werden sanktioniert. <br>
-               • Parkverbote (z. B. Marina Beach Steg); Klappenauspuff-Regel beachten. <br>
-               • Bei Ranger-Konvois/Rechte-Fahrbahn freimachen – sonst sofortige Maßnahmen.</p>
-          </div>
-        </article>
-
-        <!-- §9 Alcatraz -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§9</div><div class="acc-title">Alcatraz – Hochsicherheitsinsel</div><div class="acc-plus">+</div></header>
-          <div class="acc-body">
-            <p>• Ersatz für Kurz-Banns (1–7 Tage): Ingame-Haft (1 Tag = 6h aktiv). <br>
-               • Verlängerung bei AFK/Regelverstößen; Entlassung nur in Ausnahmefällen. <br>
-               • Regeln: keine Korruption/keine Konflikte ohne triftigen RP-Grund; Flucht → Verlängerung.</p>
-          </div>
-        </article>
-
-        <!-- §10 Paleto & Pufferzonen -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§10</div><div class="acc-title">Paleto-Bank, Pufferzonen & Grenzhoheit</div><div class="acc-plus">+</div></header>
-          <div class="acc-body">
-            <p>• Paleto Bank liegt in militärischer Pufferzone; Schutz primär durch Ranger. <br>
-               • „Wer zuerst kontrolliert, hat operative Hoheit“ (Roxwood ↔ Los Santos). <br>
-               • Koordination empfohlen, aber nicht zwingend – sauberer RP-Ablauf hat Vorrang.</p>
-          </div>
-        </article>
-
-        <!-- §11 Roxwood StVO -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§11</div><div class="acc-title">Roxwood – Straßenverkehrsordnung (Auszug)</div><div class="acc-plus">+</div></header>
-          <div class="acc-body">
-            <p>• Rücksichtsloses Fahren: 15.000$ Bußgeld; falsche Straßenseite 1.500$. <br>
-               • Illegale Rennen: Haft + Abschiebung. <br>
-               • Parken auf Gehwegen/Staatszentrum ohne Genehmigung: 5.000$.</p>
-          </div>
-        </article>
-
-        <!-- §6.0 Blacklisted Wörter -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§12</div><div class="acc-title">Blacklisted Wörter (Auszug)</div><div class="acc-plus">+</div></header>
-          <div class="acc-body">
-            <p>• „Frak/Regelwerk=Bibel/X-Muskel/Movement/Aim/One-Shot/GG“, Livestream-Begriffe, <br>
-               • familiär/extrem beleidigende, sexistische/rassistische Ausdrücke, <br>
-               • Anspielungen auf Support („Götter/PowerRanger/Suppe“ usw.).</p>
-          </div>
-        </article>
-
-        <!-- §7 Sonstiges -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§13</div><div class="acc-title">Sonstiges (Raub/Geiseln/Medics/Innenräume)</div><div class="acc-plus">+</div></header>
-          <div class="acc-body">
-            <p>• Raub über RP-Grund; Forderungen realistisch; Geiseln max. gemäß Liste. <br>
-               • Medics: erst nach Schießerei; kein Wiederbeleben im Feuer. <br>
-               • Innenräume: kein Herumrennen ohne RP-Grund; kein Teamen im FFA. <br>
+            <p>• Medics: erst nach Schießerei; kein Revive im Feuer. <br>
+               • Innenräume: kein Herumrennen ohne RP-Grund. <br>
+               • FFA: kein Teamen. <br>
                • Namensführung: Vor-/Nachname + ggf. Fraktionskürzel, keine Sonderzeichen/Zahlen.</p>
           </div>
         </article>
 
-        <!-- §8 Airdrops -->
-        <article class="acc"><header class="acc-head"><div class="acc-num">§14</div><div class="acc-title">Airdrops</div><div class="acc-plus">+</div></header>
+        <article class="acc"><header class="acc-head"><div class="acc-num">§9</div><div class="acc-title">Airdrops</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• Nur auf Festland; erreichbar per Feldweg/weißer Straße. <br>
                • Werfende Partei: beim Drop nicht im Fahrzeug; Verteidigung ausschließlich zu Fuß. <br>
-               • Angreifer: Anfahrt im Fahrzeug ok, Angriff zu Fuß; Fahrzeuge erst nach Kampf wieder nutzen.</p>
+               • Angreifer: Anfahrt im Fahrzeug ok, Angriff zu Fuß; Fahrzeuge erst nach Kampf.</p>
           </div>
         </article>
 
+        <!-- Alle ehemaligen Roxwood/Alcatraz/Paleto-Abschnitte wurden entfernt -->
       </div>
     </div>
   </section>
 
-  <!-- FRAKTIONSREGELWERK (erweitert) -->
+  <!-- FRAKTIONSREGELWERK -->
   <section id="tab-frak" class="tabs-content hidden">
     <div class="section">
       <h2>Fraktionsregelwerk</h2>
@@ -335,19 +342,18 @@
           </div>
         </article>
 
-        <article class="acc"><header class="acc-head"><div class="acc-num">F5</div><div class="acc-title">Raub, Geiseln & Verhandlungen</div><div class="acc-plus">+</div></header>
+        <article class="acc"><header class="acc-head"><div class="acc-num">F5</div><div class="acc-title">Raub, Geiseln & Verhandlungen (Fraktionen)</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
-            <p>• Raub nur mit stimmigem RP-Grund; Geisel-Limits je nach Heist (Laden, Juwelier, Staatsbank etc.). <br>
-               • Verhandlungen Face-to-Face; keine Funk/Proxy-Deals. <br>
-               • Bei aktivem Raub-Cooldown Geiseln freilassen.</p>
+            <p>• Raub nur mit stimmigem RP-Grund; <b>Verhandlungen immer IC vor Ort</b>. <br>
+               • <b>Keine Erpressung von Fraktions-Items</b> (z. B. Dienstwaffen). <br>
+               • Geisel-Limits gem. Regelwerk §7 (siehe oben).</p>
           </div>
         </article>
 
-        <article class="acc"><header class="acc-head"><div class="acc-num">F6</div><div class="acc-title">Illegale Routen, Wirtschaft & Airdrops</div><div class="acc-plus">+</div></header>
+        <article class="acc"><header class="acc-head"><div class="acc-num">F6</div><div class="acc-title">Illegale Routen & Wirtschaft</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p>• Illegale Routen dürfen am Sammler/Verarbeiter/Käufer ausgeraubt werden; unterwegs nur mit RP-Bezug. <br>
-               • Wirtschaft ist dynamisch; Gewinne durch Risiko/Story. <br>
-               • Airdrops: siehe Regelwerk §14 (fußbasiert; Fahrzeuge erst nach Kampf).</p>
+               • Wirtschaft ist dynamisch; Gewinne durch Risiko/Story – kein Grauzonen-Farmen.</p>
           </div>
         </article>
 
@@ -370,26 +376,33 @@
     </div>
   </section>
 
-  <!-- PHILOSOPHIE (ausgebaut aus vorherigem Schritt, unverändert) -->
+  <!-- PHILOSOPHIE -->
   <section id="tab-philo" class="tabs-content hidden">
     <div class="section">
       <h2>Philosophie</h2>
-      <p>Sona City ist kein „Gewinnspiel“, sondern eine gemeinsame Erzählung. <b>Story first, Fairness immer.</b></p>
-      <h3>Haltung</h3>
+      <p>Sona City ist kein „Gewinnspiel“, sondern eine lebendige, gemeinsame Erzählung. <b>Story first, Fairness immer.</b></p>
+      <h3>Haltung & Zusammenleben</h3>
       <ul>
-        <li>Respekt – IC hart, OOC klar.</li><li>Konflikte mit Sinn – Grund, Geschichte und Ende.</li><li>Konsistenz – Konsequenzen ernst nehmen.</li>
+        <li><b>Respekt</b> – IC hart, OOC klar.</li>
+        <li><b>Konflikte mit Sinn</b> – Grund, Geschichte, Ende.</li>
+        <li><b>Konsistenz</b> – Konsequenzen ernst nehmen.</li>
+        <li><b>Inklusion</b> – Neulinge abholen, Hooks geben.</li>
       </ul>
       <h3>Wirtschaft & Risiko</h3>
       <ul>
-        <li>Dynamische Ökonomie, Chancen & Verluste.</li><li>Kein Pay-to-Win; Vorteile werden erspielt.</li>
+        <li>Dynamische Ökonomie – Chancen & Verluste.</li>
+        <li>Kein Pay-to-Win – Vorteile werden erspielt.</li>
+        <li>Teamplay & Unternehmergeist statt Grauzonen.</li>
       </ul>
       <h3>Konfliktkultur</h3>
       <ul>
-        <li>Faire Calls, kein Grauzonen-Missbrauch.</li><li>Tempo mit Pausen; erst ausspielen, dann klären.</li>
+        <li>Faire Calls, kein Grauzonen-Missbrauch.</li>
+        <li>Tempo mit Pausen; erst ausspielen, dann Support.</li>
       </ul>
-      <h3>Creator/Streams</h3>
+      <h3>Creator & Streams</h3>
       <ul>
-        <li>IC bleibt IC; Stream-Infos sind tabu.</li><li>Keine Bloßstellung; Highlights statt Drama-Farming.</li>
+        <li>IC bleibt IC; Stream-Infos sind tabu.</li>
+        <li>Keine Bloßstellung, Highlights statt Drama-Farming.</li>
       </ul>
     </div>
   </section>
@@ -398,7 +411,8 @@
   <section id="tab-shop" class="tabs-content hidden">
     <div class="section">
       <h2>Tebex-Shop</h2>
-      <p>Hier entsteht unser Shop (Link folgt).</p>
+      <p>Hier entsteht unser Shop. (Link wird ergänzt.)</p>
+      <p style="color:var(--muted)">Bis dahin: Unterstütze uns gern auf Discord oder mit Feedback zu Ideen.</p>
     </div>
   </section>
 
