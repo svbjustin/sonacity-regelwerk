@@ -457,36 +457,3 @@
 </body>
 </html>
 
-
-@media (max-width: 1200px) {
-  .nav { padding: 10px 14px; }
-  .brand { margin: 0 auto; font-size: 18px; }
-  .brand img { width: 28px; height: 28px; object-fit: contain; }
-
-  .tabs {
-    display: flex; gap: 10px; width: 100%;
-    overflow-x: auto; -webkit-overflow-scrolling: touch;
-    padding: 6px 2px 4px; margin: 6px 0 2px;
-    scrollbar-width: none;
-  }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab { flex: 0 0 auto; padding: 9px 12px; font-size: 14px; border-radius: 10px; transform: none !important; }
-
-  .hero, .section, .content { padding: 18px 14px; }
-  .hero h1 { font-size: clamp(26px, 6vw, 40px); line-height: 1.15; margin-bottom: 10px; }
-  .hero p  { font-size: 15px; line-height: 1.55; max-width: 46ch; }
-
-  .cta-row { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 520px; }
-  .btn { font-size: 15px; padding: 12px 16px; border-radius: 12px; }
-
-  .gallery, .card-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-  .hero-media, .gallery img { width: 100%; height: auto; border-radius: 16px; object-fit: cover; }
-
-  .accordion .acc-head { padding: 14px 16px; font-size: 15px; border-radius: 12px; }
-  .accordion .acc-body { padding: 14px 16px; font-size: 14px; }
-}
-
-/* Touch-Geräte: Hover-Vergrößerung entschärfen */
-@media (hover: none) {
-  .tab:hover, .btn:hover, .img-zoom:hover { transform: none; box-shadow: none; }
-}
