@@ -14,9 +14,10 @@
     --border:#222;
     --text:#e8e8e8;
     --muted:#b8b8b8;
-    --accent:#ff7a1a;
-    --accent-2:#ffb05a;
+    --accent:#ff7a1a;   /* helles Orange */
+    --accent-2:#ffb05a; /* dunkleres Orange */
     --good:#18c37d;
+    --chip:#1f1f1f;
   }
   *{box-sizing:border-box}
   html,body{height:100%}
@@ -81,6 +82,23 @@
   .acc.open .acc-body{display:block}
   .acc.open .acc-plus{transform:rotate(45deg)}
 
+  /* TEAMLISTE */
+  .team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:8px}
+  .team-card{background:linear-gradient(180deg,#181818 0,#141414 100%);border:1px solid var(--border);border-radius:14px;padding:16px}
+  .team-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+  .team-title{font-weight:800}
+  .badge{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid #2a2a2a;background:var(--chip);color:var(--muted)}
+  .rank-table{width:100%;border-collapse:separate;border-spacing:0 8px}
+  .rank-table th{color:#a9a9a9;font-weight:600;text-align:left;font-size:12px;padding:4px 8px}
+  .rank-table td{padding:10px 12px;background:#131313;border:1px solid #262626}
+  .rank-table tr td:first-child{border-radius:10px 0 0 10px}
+  .rank-table tr td:last-child{border-radius:0 10px 10px 0}
+  .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:#1b1b1b;border:1px solid #2a2a2a;margin:3px 6px 3px 0;font-size:13px}
+  .chip.orange{background:linear-gradient(180deg,#1f1a15 0,#1a1612 100%);border-color:#3a2a16}
+  .chip.green{background:linear-gradient(180deg,#152017 0,#121a13 100%);border-color:#26472f}
+  .chip.purple{background:linear-gradient(180deg,#1b1620 0,#15121a 100%);border-color:#33284a}
+  .chip.blue{background:linear-gradient(180deg,#151b20 0,#12151a 100%);border-color:#264356}
+
   .footer{color:#9a9a9a;text-align:center;padding:40px 0}
 
   @media (max-width:1024px){
@@ -88,62 +106,50 @@
     .hero-media{max-width:100%;width:100%}
     .pill-grid{grid-template-columns:1fr}
     .gallery{grid-template-columns:1fr}
+    .team-grid{grid-template-columns:1fr}
   }
 
   /* =========================
-     MOBILE/ TABLET RESPONSIVE
-     (PC bleibt unverändert)
+     MOBILE / TABLET (PC bleibt)
      ========================= */
   @media (max-width: 900px) {
     .nav { padding: 10px 14px; }
-    .nav .container, .container.nav-wrap { gap: 10px; }
-
-    .brand {
-      display:flex; align-items:center; gap:10px;
-      margin:0 auto; order:1; font-size:18px; line-height:1;
-    }
+    .brand { margin:0 auto; font-size:18px; line-height:1; }
     .brand img { width:28px; height:28px; object-fit:contain; }
-
-    .tabs, #tabs {
-      order:2; display:flex; gap:10px; width:100%; overflow-x:auto;
-      -webkit-overflow-scrolling:touch; padding:6px 2px 4px; margin:6px 0 2px;
-      scrollbar-width:none;
-    }
-    .tabs::-webkit-scrollbar, #tabs::-webkit-scrollbar { display:none; }
-
+    .tabs { order:2; display:flex; gap:10px; width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; padding:6px 2px 4px; margin:6px 0 2px; scrollbar-width:none; }
+    .tabs::-webkit-scrollbar { display:none; }
     .tab { flex:0 0 auto; padding:9px 12px; font-size:14px; border-radius:10px; transform:none !important; }
-
     .section, .hero, .content { padding:18px 14px; }
-
     .hero h1 { font-size: clamp(26px, 6vw, 40px); line-height:1.15; margin-bottom:10px; }
-    .hero p { font-size:15px; line-height:1.55; max-width:46ch; }
-
-    .cta-row, .hero-cta-row, .btn-row {
-      display:flex; flex-direction:column; align-items:stretch; gap:10px; width:100%; max-width:520px;
-    }
-    .btn, .button, .cta { font-size:15px; padding:12px 16px; border-radius:12px; }
-
-    .grid-3, .grid-2, .card-grid, .features { display:grid; grid-template-columns:1fr; gap:12px; }
-    .feature, .card { padding:14px; border-radius:14px; }
-
-    .gallery, .gallery-row, .image-grid { display:grid; grid-template-columns:1fr; gap:14px; }
-    .gallery img, .image, .preview, .hero-media img, .media img {
-      width:100%; height:auto; border-radius:16px; object-fit:cover;
-    }
-
-    .accordion .acc-head, .acc-head { padding:14px 16px; font-size:15px; border-radius:12px; }
-    .accordion .acc-body, .acc-body { padding:14px 16px; font-size:14px; }
-
-    .regeln p, .regeln li { font-size:15px; line-height:1.55; }
-
-    .footer, footer { padding:18px 14px; }
+    .hero p  { font-size:15px; line-height:1.55; max-width:46ch; }
+    .cta-row{display:flex; flex-direction:column; gap:10px; width:100%; max-width:520px;}
+    .btn{ font-size:15px; padding:12px 16px; border-radius:12px; }
+    .gallery{ display:grid; grid-template-columns:1fr; gap:14px; }
+    .hero-media, .gallery img { width:100%; height:auto; border-radius:16px; object-fit:cover; }
+    .accordion .acc-head{ padding:14px 16px; font-size:15px; border-radius:12px; }
+    .accordion .acc-body{ padding:14px 16px; font-size:14px; }
   }
 
-  @media (max-width: 600px) {
-    .brand { font-size:16px; }
-    .hero h1 { font-size: clamp(24px, 7vw, 36px); }
-    .tab { font-size:13px; padding:8px 10px; }
-    .btn, .button, .cta { font-size:14px; padding:11px 14px; }
+  /* === FORCE MOBILE LAYOUT via Klasse (falls Breakpoints nicht greifen) === */
+  body.is-mobile .nav { padding: 10px 14px; }
+  body.is-mobile .brand { margin: 0 auto; font-size: 18px; }
+  body.is-mobile .brand img { width: 28px; height: 28px; object-fit: contain; }
+  body.is-mobile .tabs {
+    display: flex; gap: 10px; width: 100%;
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding: 6px 2px 4px; margin: 6px 0 2px;
+    scrollbar-width: none;
+  }
+  body.is-mobile .tabs::-webkit-scrollbar{display:none}
+  body.is-mobile .tab{flex:0 0 auto; padding:9px 12px; font-size:14px; border-radius:10px; transform:none!important}
+  body.is-mobile .hero, body.is-mobile .section{padding:18px 14px}
+  body.is-mobile .hero h1{font-size:clamp(26px,6vw,40px)}
+  body.is-mobile .hero p{font-size:15px; line-height:1.55; max-width:46ch}
+  body.is-mobile .cta-row{display:flex; flex-direction:column; gap:10px; max-width:520px}
+  body.is-mobile .gallery{display:grid; grid-template-columns:1fr; gap:14px}
+
+  @media (hover: none) {
+    .tab:hover, .btn:hover, .img-zoom:hover { transform: none; box-shadow: none; }
   }
 </style>
 </head>
@@ -158,6 +164,7 @@
       <a class="tab" data-tab="regelwerk">📘 Regelwerk</a>
       <a class="tab" data-tab="frak">🛡️ Fraktionsregelwerk</a>
       <a class="tab" data-tab="philo">🧭 Philosophie</a>
+      <a class="tab" data-tab="team">👥 Teamliste</a>
       <a class="tab" data-tab="shop">🛒 Tebex-Shop</a>
       <a class="tab btn-discord" href="https://discord.gg/sonacity" target="_blank" rel="noopener">🟠 Discord</a>
     </nav>
@@ -263,7 +270,7 @@
           </div>
         </article>
 
-        <!-- NEU: Raub & Geiseln (bereinigt + deine Werte) -->
+        <!-- Raub & Geiseln – bereinigt nach deinen Vorgaben -->
         <article class="acc"><header class="acc-head"><div class="acc-num">§7</div><div class="acc-title">Raub & Geiseln (Sona City Vorgaben)</div><div class="acc-plus">+</div></header>
           <div class="acc-body">
             <p><b>Hinweise:</b> Verhandlungen müssen <b>immer In-Character (IC)</b> und <b>persönlich vor Ort</b> geführt werden (keine Funk/Proxy-Deals). <br>
@@ -274,7 +281,7 @@
               <li><b>Staatsbank:</b> <b>mind. 4 Räuber</b> · <b>7 aktive Beamte</b> · <b>max. 5 Geiseln</b></li>
               <li><i>Außerhalb von Raubsituationen:</i> <b>max. 4 Geiseln</b> erlaubt.</li>
             </ul>
-            <p style="color:var(--muted)">Hinweis: Raubarten wie Paleto, Yacht, Human Labs, ATM/Bitcoin-ATM und Ammu-Nation existieren auf Sona City nicht und sind daher entfernt.</p>
+            <p style="color:var(--muted)">Hinweis: Paleto, Yacht, Human Labs, ATM/Bitcoin-ATM und Ammu-Nation existieren auf Sona City nicht.</p>
           </div>
         </article>
 
@@ -295,7 +302,6 @@
           </div>
         </article>
 
-        <!-- Alle ehemaligen Roxwood/Alcatraz/Paleto-Abschnitte wurden entfernt -->
       </div>
     </div>
   </section>
@@ -346,7 +352,7 @@
           <div class="acc-body">
             <p>• Raub nur mit stimmigem RP-Grund; <b>Verhandlungen immer IC vor Ort</b>. <br>
                • <b>Keine Erpressung von Fraktions-Items</b> (z. B. Dienstwaffen). <br>
-               • Geisel-Limits gem. Regelwerk §7 (siehe oben).</p>
+               • Geisel-Limits gem. Regelwerk §7.</p>
           </div>
         </article>
 
@@ -407,6 +413,149 @@
     </div>
   </section>
 
+  <!-- TEAMLISTE -->
+  <section id="tab-team" class="tabs-content hidden">
+    <div class="section">
+      <h2>Teamliste</h2>
+      <p>📅 Stand: <b>11. November</b></p>
+
+      <div class="team-grid">
+
+        <!-- Leitungsebene -->
+        <div class="team-card">
+          <div class="team-h">
+            <div class="team-title">Leitungsebene</div>
+            <span class="badge">Core Team</span>
+          </div>
+          <table class="rank-table">
+            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
+            <tbody>
+              <tr><td>Projektinhaber</td><td>
+                <span class="chip orange">Ricko</span>
+                <span class="chip orange">Alex</span>
+              </td></tr>
+              <tr><td>Projektleitung</td><td><span class="chip">none</span></td></tr>
+              <tr><td>Stv. Projektleitung</td><td><span class="chip">Ralf</span></td></tr>
+              <tr><td>Projektmanagement</td><td><span class="chip">Justin</span></td></tr>
+              <tr><td>Teamverwaltung</td><td><span class="chip">Adina</span></td></tr>
+              <tr><td>Stv. Teamverwaltung</td><td>
+                <span class="chip">Linus</span>
+                <span class="chip">Ayo</span>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Administration -->
+        <div class="team-card">
+          <div class="team-h">
+            <div class="team-title">Administration</div>
+            <span class="badge">Ops</span>
+          </div>
+          <table class="rank-table">
+            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
+            <tbody>
+              <tr><td>Superadmin</td><td><span class="chip">Lisa</span></td></tr>
+              <tr><td>Sr. Administrator</td><td><span class="chip">none</span></td></tr>
+              <tr><td>Administrator</td><td>
+                <span class="chip">Justin</span>
+                <span class="chip">Lukas</span>
+                <span class="chip">Robin</span>
+                <span class="chip">Justin</span>
+                <span class="chip">Mark</span>
+                <span class="chip">Colin</span>
+              </td></tr>
+              <tr><td>Jr. Administrator</td><td><span class="chip">none</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Verwaltung -->
+        <div class="team-card">
+          <div class="team-h">
+            <div class="team-title">Verwaltung</div>
+            <span class="badge">Führung</span>
+          </div>
+          <table class="rank-table">
+            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
+            <tbody>
+              <tr><td>Head of Fraktionsverwaltung</td><td><span class="chip">Linus</span></td></tr>
+              <tr><td>Fraktionsverwaltung</td><td>
+                <span class="chip">Adina</span>
+                <span class="chip">Til Olise</span>
+                <span class="chip">Joel</span>
+              </td></tr>
+              <tr><td>Stv. Fraktionsverwaltung</td><td>
+                <span class="chip">Robin</span>
+                <span class="chip">Luca</span>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Moderation -->
+        <div class="team-card">
+          <div class="team-h">
+            <div class="team-title">Moderation</div>
+            <span class="badge">Community</span>
+          </div>
+          <table class="rank-table">
+            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
+            <tbody>
+              <tr><td>Sr. Moderator</td><td><span class="chip">none</span></td></tr>
+              <tr><td>Moderator</td><td>
+                <span class="chip">Domenik</span>
+                <span class="chip">Jan</span>
+                <span class="chip">Jonas</span>
+                <span class="chip">Reezy</span>
+                <span class="chip">jens</span>
+              </td></tr>
+              <tr><td>Jr. Moderator</td><td><span class="chip">none</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Support-Bereich -->
+        <div class="team-card">
+          <div class="team-h">
+            <div class="team-title">Support-Bereich</div>
+            <span class="badge">Support</span>
+          </div>
+          <table class="rank-table">
+            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
+            <tbody>
+              <tr><td>Sr. Supporter</td><td><span class="chip green">Raphael</span></td></tr>
+              <tr><td>Supporter</td><td>
+                <span class="chip green">Max</span>
+                <span class="chip green">Max1</span>
+                <span class="chip green">Bean</span>
+                <span class="chip green">Tom</span>
+              </td></tr>
+              <tr><td>Jr. Supporter</td><td>
+                <span class="chip">Luca</span>
+                <span class="chip">Benno</span>
+                <span class="chip">Marko</span>
+              </td></tr>
+              <tr><td>Test Supporter</td><td>
+                <span class="chip">Peter</span>
+                <span class="chip">David</span>
+                <span class="chip">Ralf</span>
+              </td></tr>
+              <tr><td>Guide</td><td>
+                <span class="chip">Vtexgp</span>
+                <span class="chip">Marvin</span>
+              </td></tr>
+              <tr><td>Test Guide</td><td><span class="chip">[Name]</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <p style="margin-top:14px;color:var(--muted)">📨 Hinweis: Bei Fragen oder Änderungswünschen zur Rangstruktur bitte eine DM an <b>@justin68224</b> (Management).</p>
+    </div>
+  </section>
+
   <!-- SHOP -->
   <section id="tab-shop" class="tabs-content hidden">
     <div class="section">
@@ -427,6 +576,7 @@
     regelwerk: document.getElementById('tab-regelwerk'),
     frak: document.getElementById('tab-frak'),
     philo: document.getElementById('tab-philo'),
+    team: document.getElementById('tab-team'),
     shop: document.getElementById('tab-shop'),
   };
   function setActive(tab){
@@ -440,7 +590,7 @@
   // Accordions
   document.querySelectorAll('.acc-head').forEach(h => h.addEventListener('click', () => h.parentElement.classList.toggle('open')));
 
-  // Suche
+  // Suche in Akkordeons
   function setupSearch(inputId, accRootId){
     const input = document.getElementById(inputId);
     const root  = document.getElementById(accRootId);
@@ -453,7 +603,22 @@
   }
   setupSearch('search-regel','acc-regel');
   setupSearch('search-frak','acc-frak');
+
+  // Force-Mobile per JS (falls Browser/Cache quer schießt)
+  (function () {
+    const MOBILE_MAX = 900; // px
+    function updateMobileClass() {
+      const w = window.innerWidth;
+      if (w <= MOBILE_MAX) document.body.classList.add('is-mobile');
+      else document.body.classList.remove('is-mobile');
+    }
+    updateMobileClass();
+    window.addEventListener('resize', updateMobileClass);
+    try {
+      const isTouch = matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window;
+      if (isTouch) document.body.classList.add('is-mobile');
+    } catch(e) {}
+  })();
 </script>
 </body>
 </html>
-
