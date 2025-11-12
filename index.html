@@ -83,11 +83,10 @@
   .acc.open .acc-plus{transform:rotate(45deg)}
 
   /* TEAMLISTE */
-  .team-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:8px}
+  .team-grid{display:grid;grid-template-columns:1fr;gap:18px;margin-top:8px}
   .team-card{background:linear-gradient(180deg,#181818 0,#141414 100%);border:1px solid var(--border);border-radius:14px;padding:16px}
   .team-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
   .team-title{font-weight:800}
-  .badge{font-size:12px;padding:6px 10px;border-radius:999px;border:1px solid #2a2a2a;background:var(--chip);color:var(--muted)}
   .rank-table{width:100%;border-collapse:separate;border-spacing:0 8px}
   .rank-table th{color:#a9a9a9;font-weight:600;text-align:left;font-size:12px;padding:4px 8px}
   .rank-table td{padding:10px 12px;background:#131313;border:1px solid #262626}
@@ -95,9 +94,6 @@
   .rank-table tr td:last-child{border-radius:0 10px 10px 0}
   .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:#1b1b1b;border:1px solid #2a2a2a;margin:3px 6px 3px 0;font-size:13px}
   .chip.orange{background:linear-gradient(180deg,#1f1a15 0,#1a1612 100%);border-color:#3a2a16}
-  .chip.green{background:linear-gradient(180deg,#152017 0,#121a13 100%);border-color:#26472f}
-  .chip.purple{background:linear-gradient(180deg,#1b1620 0,#15121a 100%);border-color:#33284a}
-  .chip.blue{background:linear-gradient(180deg,#151b20 0,#12151a 100%);border-color:#264356}
 
   .footer{color:#9a9a9a;text-align:center;padding:40px 0}
 
@@ -413,19 +409,16 @@
     </div>
   </section>
 
-  <!-- TEAMLISTE -->
+  <!-- TEAMLISTE (nur Leitungsebene) -->
   <section id="tab-team" class="tabs-content hidden">
     <div class="section">
       <h2>Teamliste</h2>
       <p>📅 Stand: <b>11. November</b></p>
 
       <div class="team-grid">
-
-        <!-- Leitungsebene -->
         <div class="team-card">
           <div class="team-h">
             <div class="team-title">Leitungsebene</div>
-            <span class="badge">Core Team</span>
           </div>
           <table class="rank-table">
             <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
@@ -445,111 +438,6 @@
             </tbody>
           </table>
         </div>
-
-        <!-- Administration -->
-        <div class="team-card">
-          <div class="team-h">
-            <div class="team-title">Administration</div>
-            <span class="badge">Ops</span>
-          </div>
-          <table class="rank-table">
-            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
-            <tbody>
-              <tr><td>Superadmin</td><td><span class="chip">Lisa</span></td></tr>
-              <tr><td>Sr. Administrator</td><td><span class="chip">none</span></td></tr>
-              <tr><td>Administrator</td><td>
-                <span class="chip">Justin</span>
-                <span class="chip">Lukas</span>
-                <span class="chip">Robin</span>
-                <span class="chip">Justin</span>
-                <span class="chip">Mark</span>
-                <span class="chip">Colin</span>
-              </td></tr>
-              <tr><td>Jr. Administrator</td><td><span class="chip">none</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Verwaltung -->
-        <div class="team-card">
-          <div class="team-h">
-            <div class="team-title">Verwaltung</div>
-            <span class="badge">Führung</span>
-          </div>
-          <table class="rank-table">
-            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
-            <tbody>
-              <tr><td>Head of Fraktionsverwaltung</td><td><span class="chip">Linus</span></td></tr>
-              <tr><td>Fraktionsverwaltung</td><td>
-                <span class="chip">Adina</span>
-                <span class="chip">Til Olise</span>
-                <span class="chip">Joel</span>
-              </td></tr>
-              <tr><td>Stv. Fraktionsverwaltung</td><td>
-                <span class="chip">Robin</span>
-                <span class="chip">Luca</span>
-              </td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Moderation -->
-        <div class="team-card">
-          <div class="team-h">
-            <div class="team-title">Moderation</div>
-            <span class="badge">Community</span>
-          </div>
-          <table class="rank-table">
-            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
-            <tbody>
-              <tr><td>Sr. Moderator</td><td><span class="chip">none</span></td></tr>
-              <tr><td>Moderator</td><td>
-                <span class="chip">Domenik</span>
-                <span class="chip">Jan</span>
-                <span class="chip">Jonas</span>
-                <span class="chip">Reezy</span>
-                <span class="chip">jens</span>
-              </td></tr>
-              <tr><td>Jr. Moderator</td><td><span class="chip">none</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <!-- Support-Bereich -->
-        <div class="team-card">
-          <div class="team-h">
-            <div class="team-title">Support-Bereich</div>
-            <span class="badge">Support</span>
-          </div>
-          <table class="rank-table">
-            <thead><tr><th>Rang</th><th>Mitglieder</th></tr></thead>
-            <tbody>
-              <tr><td>Sr. Supporter</td><td><span class="chip green">Raphael</span></td></tr>
-              <tr><td>Supporter</td><td>
-                <span class="chip green">Max</span>
-                <span class="chip green">Max1</span>
-                <span class="chip green">Bean</span>
-                <span class="chip green">Tom</span>
-              </td></tr>
-              <tr><td>Jr. Supporter</td><td>
-                <span class="chip">Luca</span>
-                <span class="chip">Benno</span>
-                <span class="chip">Marko</span>
-              </td></tr>
-              <tr><td>Test Supporter</td><td>
-                <span class="chip">Peter</span>
-                <span class="chip">David</span>
-                <span class="chip">Ralf</span>
-              </td></tr>
-              <tr><td>Guide</td><td>
-                <span class="chip">Vtexgp</span>
-                <span class="chip">Marvin</span>
-              </td></tr>
-              <tr><td>Test Guide</td><td><span class="chip">[Name]</span></td></tr>
-            </tbody>
-          </table>
-        </div>
-
       </div>
 
       <p style="margin-top:14px;color:var(--muted)">📨 Hinweis: Bei Fragen oder Änderungswünschen zur Rangstruktur bitte eine DM an <b>@justin68224</b> (Management).</p>
